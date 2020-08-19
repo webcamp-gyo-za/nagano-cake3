@@ -1,0 +1,33 @@
+<div class="row">
+
+<h3>商品一覧</h3>
+
+<table class="admin_item_table">
+	<thead>
+		<tr>
+			<th>商品ID</th>
+			<th>商品名</th>
+			<th>税込価格</th>
+			<th>ジャンル</th>
+			<th>ステータス</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @admin_items.each do|item| %>
+			<tr>
+				<td><%= item.item_id %></td>
+				<td><%= link_to item.name, item_path(item) %></td>
+				<td><%= item.price %>.to_i*1.1</td>
+				<td><%= item.genre_id.name %></td>
+				<td><% if  item.is_active? %>
+						<p>販売中</p>
+					<% else %>
+						<p>販売不可</p>
+					<% end %>
+				</td>
+			</tr>
+	</tbody>
+
+</table>
+</div>
