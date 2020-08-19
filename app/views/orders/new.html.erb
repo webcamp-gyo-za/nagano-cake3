@@ -1,2 +1,32 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-11">
+			<h3 class="orders-infomation-view">注文情報入力</h3>
+
+			<%=form_for(@order) do |f| %>
+			<h4>支払方法</h4>
+			 <label><%= f.radio_button :payment_method, "クレジットカード", checked: true  %>クレジットカード</label>
+
+			 <label><%= f.radio_button :payment_method, "銀行振込" %>銀行振込</label>
+
+			 <label><%= f.radio_button :adress, "ご自身の住所", checked: true  %>ご自身の住所</label>
+
+			 <%="#{current_customer.post_number} #{current_customer.adress}"%>
+			 <%="#{current_customer.first_name} #{current_customer.last_name}"%>
+
+			 <label><%= f.radio_button :X, "登録済み住所" %>登録済み住所</label>
+			 <%#ここに選択窓%>
+
+			 <label><%= f.radio_button :adress, "登録済み住所" %>登録済み住所</label>
+
+			 <h5 class="new_post_number">郵便番号(ハイフンなし)<%=f.text_field :post_number %></h5>
+			 <h5 class="new_adress">住所<%=f.text_field :adress %></h5>
+			 <h5 class="new_name">宛名<%=f.text_field :name%></h5>
+
+
+			 <%=f.submit "確認画面へ進む" %>
+			 <% end %>
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
+</div>

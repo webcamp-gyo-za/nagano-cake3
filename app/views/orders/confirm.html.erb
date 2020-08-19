@@ -1,0 +1,66 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-9">
+			<h2 class="order-confirm-view">注文情報確認</h2>
+			<table class="table table-hover table-inverse table-bordered">
+				<thead>
+					<th>商品名</th>
+					<th>単価(税込)</th>
+					<th>数量</th>
+					<th>小計</th>
+				</thead>
+				<tbody>
+					<%=@cart_items.each do |cart_item| %>
+					<td><%=attachment_image_tag cart_item.name, :image, size: "50x50", fallback: "no_image.jpg"%>
+					</td>
+					<td><%=item.price %></td>
+					<td><%=cart.amount %></td>
+					<td></td>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-xs-3">
+			<table class="table table-hover table-inverse table-bordered">
+				<tbody>
+					<tr>
+						<th>送料</th>
+						<th>!!!後で記載</th>
+					</tr>
+					<tr>
+						<th>商品合計</th>
+						<th>!!!後で記載</th>
+					</tr>
+					<tr>
+						<th>請求金額</th>
+						<th>!!!後で記載</th>
+					</tr>
+				</tbody>
+			</table>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-9">
+			<h4>支払方法<%= @order.payment_method %></h4>
+			<h4>お届け先<%= "#{@order.post_number} #{@order.address} #{@order.name}" %></h4>
+		</div>
+		<div class="col-xs-3"></div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3"></div>
+		<div class="col-xs-6">
+			<%=f.submit "購入を確定する" %>
+		</div>
+		<div class="col-xs-3"></div>
+	</div>
+</div>
+
+
+
+
+
+
