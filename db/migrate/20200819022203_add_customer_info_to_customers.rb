@@ -7,6 +7,6 @@ class AddCustomerInfoToCustomers < ActiveRecord::Migration[5.2]
     add_column :customers, :post_number, :string, null: false, default: ""
     add_column :customers, :address, :string, null: false, default: ""
     add_column :customers, :phone_number, :string, null: false, default: ""
-    add_column :customers, :is_deleted, :boolean, null: false, default: ""
+    add_column :customers, :is_deleted, :boolean, default: false
   end
 end

@@ -32,14 +32,14 @@ ActiveRecord::Schema.define(version: 2020_08_19_022203) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "first_kana"
-    t.string "last_kana"
-    t.string "post_number"
-    t.string "address"
-    t.string "phone_number"
-    t.boolean "is_deleted"
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "first_kana", default: "", null: false
+    t.string "last_kana", default: "", null: false
+    t.string "post_number", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "phone_number", default: "", null: false
+    t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
