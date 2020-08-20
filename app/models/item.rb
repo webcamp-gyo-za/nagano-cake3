@@ -5,6 +5,7 @@ class Item < ApplicationRecord
 	validates :price, presence: true, numericality: {only_integer: true}
 	validates :is_active, presence: true
 	has_many :cart_items, dependent: :destroy
+	has_many :oder_details, dependent: :destroy
 	belongs_to :genre
 	attachment :image
 end
