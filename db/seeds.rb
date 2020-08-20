@@ -8,5 +8,4 @@
 
 Admin.create!(email: "aa@aa",
 				password: "aaaaaa",
-				password_confirmation: "aaaaaa",
-				admin: true)
+				password_confirmation: "aaaaaa")

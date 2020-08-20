@@ -1,0 +1,13 @@
+<div class="row">
+<div class="genre_create_content">
+	<%= form_for(@genre) do |f| %>
+		<%= f.label :ジャンル %>
+		<%= f.text_field :name %>
+		<%= f.radio_button :is_active, checked: true %>
+		<%= f.label :有効 %>
+		<%= f.radio_button :is_active, checked: false %>
+		<%= f.label :無効 %>
+		<%= f.submit "追加", class: "btn btn-primary" %>
+	<% end %>
+</div>
+</div>
