@@ -1,5 +1,5 @@
 class Admins::GenresController < ApplicationController
-	before_action :if_not_admin
+	# before_action :authenticate_admin!
 
 	def index
 		@genres = Genre.all
@@ -16,24 +16,20 @@ class Admins::GenresController < ApplicationController
 			redirect_to genres_path(@admin_item)
 		else
 			render :edit
-	end
+		end
 	end
 
 	def create
 		@genre = Genre.new(genre_params)
 		@genres = Genre.all
 		if @genre.save
-			redirect_to genres_path(@genre)
+			redirect_to genre_path
 		else
 			render :index
+		end
 	end
 
 	private
-  	def if_not_admin
-    	redirect_to root_path unless current_user.admin?
-  	end
-
-
   	def genre_params
   		params.require(:item).permit(:name, :is_active)
 	end

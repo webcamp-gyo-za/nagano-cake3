@@ -1,6 +1,6 @@
 class Admins::ItemsController < ApplicationController
-	before_action :if_not_admin
-	before_action :set_admin_item, only: [:show, :edit, :destroy, :new]
+	# before_action :authenticate_admin!
+	before_action :set_admin_item, only: [:show, :edit, :update]
 
 	def new
 		@item = Item.new
@@ -9,23 +9,16 @@ class Admins::ItemsController < ApplicationController
 
 	def index
 		@items = Item.all
-		@genre = @item.genre
 	end
 
 	def show
-		@items = Item.all
-		@item = Item.find(params[:id])
-		@genre = @item.genre
-
 	end
 
 	def edit
-		@item = Item.find(params[:id])
 	end
 
 	def create
 		@item = Item.new(item_params)
-		@genre = @item.genre
 		if @item.save
 			redirect_to admin_item_path(@item)
 		else
@@ -34,22 +27,15 @@ class Admins::ItemsController < ApplicationController
 	end
 
 	def update
-		@item = Item.find(params[:id])
-		if @item.update(admin_item_params)
-			redirect_to admin_item_path(@admin_item)
+		if @item.update(item_params)
+			redirect_to admin_items_path
 		else
 			render :edit
 		end
 	end
 
 
-
-
 	private
-  	def if_not_admin
-    	redirect_to root_path unless current_user.admin?
-  	end
-
   	def set_admin_item
     	@item = Item.find(params[:id])
   	end
