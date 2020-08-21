@@ -3,11 +3,11 @@
 <h3>商品新規登録</h3>
 
 	<div class="item_newform">
-		<%= form_for(@item) do |f| %>
+		<%= form_for(@item, url:admins_items_path(@item)) do |f| %>
 
 			<div class="col-xs-4">
 				<div class="item_leftfield">
-					<%= f.attachment_field(item, :image, :fill, 100, 100, fallback: "no image") %>
+					<%= f.attachment_field :image %>
 				</div>
 			</div>
 

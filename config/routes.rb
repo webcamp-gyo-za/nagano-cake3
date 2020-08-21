@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :customers
+
   devise_scope :admins do
     devise_for :admins, controllers: {
       registrations: 'admins/registrations',
@@ -7,22 +7,37 @@ Rails.application.routes.draw do
       sessions: 'admins/sessions'
     }
   end
-  resources :cart_items, only: [:index, :create, :update, :destroy] do
-    collection do
-      delete 'destroy_all'
-    end
+  devise_scope :customers do
+    devise_for :customers, controllers: {
+      registrations: 'customers/registrations',
+      passwords: 'customers/passwords',
+      sessions: 'customers/sessions'
+    }
   end
 
   namespace :admins do
-    get 'homes/top' => 'homes#top', as:'top'
-    resources :orders, only: [:index, :show, :new]
-    resources :deliveries, only: [:edit, :index]
-
-    resources :items, only: [:index,:edit, :show]
-    resources :customers, only: [:index, :show, :new, :edit]
+    get 'homes/top', to: 'homes#top', as:'top'
+    resources :orders, only: [:index, :show, :new, :update]
+    resources :deliveries, only: [:edit, :index, :update]
+    resources :genres, only:[:index, :edit, :create, :update]
+    resources :items, only: [:new, :index,:edit, :show, :create, :update]
+    resources :customers, only: [:index, :show, :new, :edit, :update]
   end
-  root to: 'homes#top'
-  get 'home/about', to: 'homes#about'
+
+
+    resources :cart_items, only: [:index, :create, :update, :destroy] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
+    resources :orders, only: [:index, :show, :new, :create, :update]
+    resources :deliveries, only: [:edit, :index, :create, :update]
+    resources :items, only: [:index, :show]
+
+      get 'order/confirm', to: 'orders#confirm'
+      root to: 'items#home'
+      get 'item/about', to: 'items#about'
+
 
 
 

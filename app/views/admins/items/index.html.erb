@@ -1,33 +1,36 @@
 <div class="row">
 
 <h3>商品一覧</h3>
-
-<table class="admin_item_table">
-	<thead>
-		<tr>
-			<th>商品ID</th>
-			<th>商品名</th>
-			<th>税込価格</th>
-			<th>ジャンル</th>
-			<th>ステータス</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<% @admin_items.each do|item| %>
+	<p class="new_itembtn">
+		<%= link_to '', new_admins_item_path, class: 'lyphicon glyphicon-plus' %>
+	</p>
+	<table class="table table-hover table-inverse">
+		<thead>
 			<tr>
-				<td><%= item.item_id %></td>
-				<td><%= link_to item.name, item_path(item) %></td>
-				<td><%= item.price %>*1.1</td>
-				<td><%= item.genre_id.name %></td>
-				<td><% if  item.is_active? %>
-						<p>販売中</p>
-					<% else %>
-						<p>販売不可</p>
-					<% end %>
-				</td>
+				<th>商品ID</th>
+				<th>商品名</th>
+				<th>税込価格</th>
+				<th>ジャンル</th>
+				<th>ステータス</th>
 			</tr>
-	</tbody>
+		</thead>
 
-</table>
+		<tbody>
+			<% @items.each do|item| %>
+				<tr>
+					<td><%= item.id %></td>
+					<td><%= link_to item.name, admins_item_path(item) %></td>
+					<td><%= item.price %>*1.1</td>
+					<td><%= item.genre_id.name %></td>
+					<td><% if  item.is_active? %>
+							<p>販売中</p>
+						<% else %>
+							<p>販売不可</p>
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+
+	</table>
 </div>

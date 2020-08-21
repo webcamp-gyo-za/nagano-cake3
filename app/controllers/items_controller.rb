@@ -1,12 +1,14 @@
 class ItemsController < ApplicationController
   def index
   	@items = Item.all
-  	@genre = Item.genre
-  end
-
-  def edit
   end
 
   def show
+  	@items = Item.find(params[:id])
   end
+
+  private
+  def item_params
+		params.require(:item).permit(:name, :image_id, :introduction)
+	end
 end

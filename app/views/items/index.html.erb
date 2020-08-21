@@ -12,12 +12,6 @@
 				<%= item.price %>
 			<% end %>
 		</div>
-		<div class="pagenation">
-			<p><</p>
-			<p>1</p>
-			<p>2</p>
-			<p>3</p>
-			<p>></p>
-		</div>
+		<%= paginate @items %>
 	</div>
 </div>
