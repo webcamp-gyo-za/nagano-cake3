@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :customers, controllers: {
+    sessions: 'customers/sessions',
+    passwords: 'customers/passwords',
+    registrations: 'customers/registrations'
+  }
 
   devise_scope :admins do
     devise_for :admins, controllers: {
@@ -7,13 +12,7 @@ Rails.application.routes.draw do
       sessions: 'admins/sessions'
     }
   end
-  devise_scope :customers do
-    devise_for :customers, controllers: {
-      registrations: 'customers/registrations',
-      passwords: 'customers/passwords',
-      sessions: 'customers/sessions'
-    }
-  end
+
 
   namespace :admins do
     get 'homes/top', to: 'homes#top', as:'top'
@@ -25,21 +24,19 @@ Rails.application.routes.draw do
   end
 
 
-    resources :cart_items, only: [:index, :create, :update, :destroy] do
-      collection do
-        delete 'destroy_all'
-      end
+  resources :cart_items, only: [:index, :create, :update, :destroy] do
+    collection do
+      delete 'destroy_all'
     end
-    resources :orders, only: [:index, :show, :new, :create, :update]
-    resources :deliveries, only: [:edit, :index, :create, :update]
-    resources :items, only: [:index, :show]
+  end
+  resources :orders, only: [:index, :show, :new, :create, :update]
+  resources :deliveries, only: [:edit, :index, :create, :update]
+  resources :items, only: [:index, :show]
+  resources :customers, only: [:show, :edit, :update]
 
-      get 'order/confirm', to: 'orders#confirm'
-      root to: 'items#home'
-      get 'item/about', to: 'items#about'
-
-
-
+  get 'order/confirm', to: 'orders#confirm'
+  root to: 'items#home'
+  get 'item/about', to: 'items#about'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,2 +1,20 @@
-<h1>Deliveries#index</h1>
-<p>Find me in app/views/deliveries/index.html.erb</p>
+<div class="row">
+  <h2>配送先登録/一覧</h2>
+  <div class="deliveries-register">
+    <%= form_for(@deliveries) do |f| %>
+    <div class="form-grop">
+      <%= f.text_field :post_number, placeholder: "郵便番号" %>
+    </div>
+    <div class="form-grop">
+      <%= f.text_field :address, placeholder: "住所" %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :last_name, placeholder: "姓" %>
+      <%= f.text_field :first_name, placeholder: "名" %>
+    </div>
+    <div class="row">
+      <%= f.submit "登録する", class: "btn btn-primary btn-outline-danger" %>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -14,5 +14,5 @@ class Customer < ApplicationRecord
     validates :phone_number
     validates :email
   end
-
+  has_many :deliveries, dependent: :destroy
 end
