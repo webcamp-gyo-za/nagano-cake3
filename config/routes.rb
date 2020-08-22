@@ -7,13 +7,13 @@ Rails.application.routes.draw do
       sessions: 'admins/sessions'
     }
   end
-  devise_scope :customers do
+
     devise_for :customers, controllers: {
       registrations: 'customers/registrations',
       passwords: 'customers/passwords',
       sessions: 'customers/sessions'
     }
-  end
+
 
   namespace :admins do
     get 'homes/top', to: 'homes#top', as:'top'
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :new, :create, :update]
     resources :deliveries, only: [:edit, :index, :create, :update]
     resources :items, only: [:index, :show]
-
+    resources :gemres, only: [:show]
       get 'order/confirm', to: 'orders#confirm'
       root to: 'items#home'
       get 'item/about', to: 'items#about'
