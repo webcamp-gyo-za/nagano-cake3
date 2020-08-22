@@ -9,7 +9,8 @@ class ItemsController < ApplicationController
   end
 
   def home
-
+    @genres = Genre.all
+    @items = Item.all
   end
 
   private

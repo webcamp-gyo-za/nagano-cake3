@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_085703) do
+ActiveRecord::Schema.define(version: 2020_08_22_082819) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2020_08_20_085703) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "item_id"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -45,28 +53,28 @@ ActiveRecord::Schema.define(version: 2020_08_20_085703) do
   end
 
   create_table "deliveries", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "post_number"
-    t.string "address"
-    t.text "name"
+    t.integer "customer_id", null: false
+    t.string "post_number", default: "", null: false
+    t.string "address", default: "", null: false
+    t.text "name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.boolean "is_active"
+    t.string "name", default: "", null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "genre_id"
-    t.string "name"
-    t.string "image_id"
-    t.text "introduction"
-    t.integer "price"
-    t.boolean "is_active"
+    t.integer "genre_id", null: false
+    t.string "name", default: "", null: false
+    t.string "image_id", default: "", null: false
+    t.text "introduction", default: "", null: false
+    t.integer "price", null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -77,14 +85,14 @@ ActiveRecord::Schema.define(version: 2020_08_20_085703) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "post_number"
-    t.string "address"
-    t.string "name"
-    t.integer "shipping_cost"
-    t.integer "order_price"
-    t.integer "status"
-    t.integer "payment_method"
+    t.integer "customer_id", null: false
+    t.string "post_number", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "name", default: "", null: false
+    t.integer "shipping_cost", default: 800, null: false
+    t.integer "order_price", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "payment_method", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
