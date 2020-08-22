@@ -7,6 +7,10 @@ class ItemsController < ApplicationController
   	@items = Item.find(params[:id])
   end
 
+  def home
+
+  end
+
   private
   def item_params
 		params.require(:item).permit(:name, :image_id, :introduction)
