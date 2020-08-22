@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resources :deliveries, only: [:edit, :index, :create, :update]
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update]
-    resources :gemres, only: [:show]
+    resources :genres, only: [:show]
       get 'order/confirm', to: 'orders#confirm'
       root to: 'items#home'
       get 'item/about', to: 'items#about'

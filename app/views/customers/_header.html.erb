@@ -1,50 +1,49 @@
-
 <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-    <!--顧客 -->
-    <% if customer_signed_in? %>
-    <p>ようこそ、<%= full_name.name %>さん!</p>
-      <li>
-      <%= link_to " マイページ", (current_user) %>
-      </li>
-      <li class="">
-         <%= link_to " 商品一覧",  %>
-      </li>
-      <li class="">
-        <%= link_to " カート", cart_items%>
-      </li>
-      <li class="">
-        <%= link_to " ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
-      <!--管理者-->
-    <% elsif admin_signed_in?%>
-      <li>
-      <%= link_to " 商品一覧", admins_items(current_user) %>
-      </li>
-      <li class="">
-         <%= link_to " 会員一覧", admins_customers %>
-      </li>
-      <li class="">
-        <%= link_to " 注文履歴一覧", cart_items%>
-      </li>
-      <li>
-        <%= link_to "ジャンル一覧", admins_genres%>
-      </li>
-      <li class="">
-        <%= link_to " ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-      <!--非ログイン -->
-    <% else %>
-      <li class="">
-        <%= link_to " About", item_about %>
-      </li>
-      <li class="">
-        <%= link_to " 商品一覧", home_about_path %>
-      </li>
-      <li class="">
-        <%= link_to " 新規登録", new_customoer_registration_path %>
-      </li>
-      <li class="">
-        <%= link_to " ログイン", new_customer_session_path %>
-      </li>
-    <% end %>
-  </ul>
+  <!--顧客 -->
+  <% if customer_signed_in? %>
+  <p>ようこそ、<%= full_name.name %>さん!</p>
+  <li>
+    <%= link_to " マイページ", (current_user) %>
+  </li>
+  <li class="">
+    <%= link_to " 商品一覧",  %>
+  </li>
+  <li class="">
+    <%= link_to " カート", cart_items%>
+  </li>
+  <li class="">
+    <%= link_to " ログアウト", destroy_customer_session_path, method: :delete %>
+  </li>
+  <!--管理者-->
+  <% elsif admin_signed_in?%>
+  <li>
+    <%= link_to " 商品一覧", admins_items(current_user) %>
+  </li>
+  <li class="">
+    <%= link_to " 会員一覧", admins_customers %>
+  </li>
+  <li class="">
+    <%= link_to " 注文履歴一覧", cart_items%>
+  </li>
+  <li>
+    <%= link_to "ジャンル一覧", admins_genres%>
+  </li>
+  <li class="">
+    <%= link_to " ログアウト", destroy_admin_session_path, method: :delete %>
+  </li>
+  <!--非ログイン -->
+  <% else %>
+  <li class="">
+    <%= link_to " About", item_about %>
+  </li>
+  <li class="">
+    <%= link_to " 商品一覧", home_about_path %>
+  </li>
+  <li class="">
+    <%= link_to " 新規登録", new_customoer_registration_path %>
+  </li>
+  <li class="">
+    <%= link_to " ログイン", new_customer_session_path %>
+  </li>
+  <% end %>
+</ul>
