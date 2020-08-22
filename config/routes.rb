@@ -29,14 +29,16 @@ Rails.application.routes.draw do
       delete 'destroy_all'
     end
   end
-  resources :orders, only: [:index, :show, :new, :create, :update]
-  resources :deliveries, only: [:edit, :index, :create, :update]
-  resources :items, only: [:index, :show]
-  resources :customers, only: [:show, :edit, :update]
-  resources :gemres, only: [:show]
-  get 'order/confirm', to: 'orders#confirm'
-  root to: 'items#home'
-  get 'item/about', to: 'items#about'
+
+    resources :orders, only: [:index, :show, :new, :create, :update]
+    resources :deliveries, only: [:edit, :index, :create, :update]
+    resources :items, only: [:index, :show]
+    resources :customers, only: [:show, :edit, :update]
+    resources :genres, only: [:show]
+      get 'order/confirm', to: 'orders#confirm'
+      root to: 'items#home'
+      get 'item/about', to: 'items#about'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
