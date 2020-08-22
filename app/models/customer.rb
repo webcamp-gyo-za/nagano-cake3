@@ -14,5 +14,11 @@ class Customer < ApplicationRecord
     validates :phone_number
     validates :email
   end
+
+  def full_name
+    self.family_name + " " + self.first_name
+  end
+  
   has_many :deliveries, dependent: :destroy
+
 end
