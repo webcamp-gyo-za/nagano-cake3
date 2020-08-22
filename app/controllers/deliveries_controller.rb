@@ -3,5 +3,6 @@ class DeliveriesController < ApplicationController
   end
 
   def index
+    @deliveries = Deliveries.new
   end
 end
