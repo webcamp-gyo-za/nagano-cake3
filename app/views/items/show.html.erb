@@ -1,2 +1,37 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+item/show
+<%= link_to "商品一覧", items_path %>
+
+<div class="row">
+  <h2>商品詳細</h2><br>
+    <div class="col-xs-4">
+      <%= attachment_image_tag @item, :image, size: "300x300", fallback: "no image" %><br>
+    </div>
+
+    <div class="col-xs-8">
+      <h4 style="margin-bottom: 30px;">
+        <%= @item.name %>
+      </h4>
+
+      <div style="display: flex;">
+        <h4 style="margin: 0 30px 30px 0;">商品説明</h4><br>
+        <div style="overflow-wrap: break-word;　word-wrap: break-word; width: 300px;">
+          <%= @item.introduction %>
+        </div>
+      </div>
+
+
+        <h4 style="margin-bottom: 30px;">
+          ¥<%= @item.price.to_s(:delimited) %> (税込)
+        </h4>
+
+        <p class="item-counts">
+        	<%#= form_for(@cart_item) do |f| %>
+        		<%#= f.hidden_field :item_id %>
+	        	<%#= f.select :quantity, options_for_select((1..30).to_a), include_blank: "個数選択" %>
+	        	<%#= f.submit "カートに入れる",class:"btn btn-primary" %>
+        	<%# end %>
+        </p>
+
+
+  </div>
+</div>
