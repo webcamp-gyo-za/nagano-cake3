@@ -9,12 +9,14 @@
 
 			 <label><%= f.radio_button :payment_method, "銀行振込" %>銀行振込</label>
 
+			 <h4>お届け先</h4>
 			 <label><%= f.radio_button :adress, "ご自身の住所", checked: true  %>ご自身の住所</label>
 
 			 <%="#{current_customer.post_number} #{current_customer.adress}"%>
 			 <%="#{current_customer.first_name} #{current_customer.last_name}"%>
 
-			 <label><%= f.radio_button :X, "登録済み住所" %>登録済み住所</label>
+			 <label><%= f.radio_button :adress, "登録済み住所" %>登録済み住所</label>
+			 <%= f.collection_select(:delivery_id, @deliveries, :id, :address) %>
 			 <%#ここに選択窓%>
 
 			 <label><%= f.radio_button :adress, "新しいお届け先" %>新しいお届け先</label>

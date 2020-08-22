@@ -1,0 +1,63 @@
+<div class="row">
+	<div class="col-xs-9">
+		<h2 class="admin's_order-show-view">注文履歴詳細</h2>
+		<h3>購入者<%=@order.customer.name %></h3>
+		<h3>配送先<%= @order.post_number %><%= @order.address %><br>
+                 <%= @order.name %>
+        </h3>
+        <h3>支払方法<%= @order.payment_method %></h3>
+        <h3>注文ステータス<%=form_for @order, :url => { action: "update" } do |f| %>
+        	<%= f.select :status, ['入金待ち', '入金確認', '製作中', '発送準備中', '発送済み'] %>
+            <%= f.submit "更新" %>
+        </h3>
+
+    </div>
+    <div class="col-xs-3"></div>
+</div>
+
+<div class="row">
+	<div class="col-xs-8">
+		   <table class="table table-hover table-inverse">
+				<tbody>
+					<%=@orders.each do |order| %>
+					　<tr>
+						<th>商品名</th>
+						<th>単価(税込)</th>
+						<th>数量</th>
+						<th>小計</th>
+						<th>製作ステータス</th>
+						<th></th>
+					　</tr>
+					　<tr>
+						<td><%= item.name %></td>
+						<td><%= item.price%></td>
+						<td><%= order_details.number %></td>--------- カートの個数?
+						<td><%#= 計算の処理%></td>
+						<td>
+							<%=form_for order_detail, url: admins_ordered_product_path, html: {method: "patch"})  do |f| %>
+							<%= f.select :status, ['着手不可', '製作待ち', '製作中', '製作完了'] %>
+            　　　　　　　　　<%= f.submit "更新" %>
+						</td>
+					　</tr>
+					<% end %>
+				</tbody>
+		   </table>
+    </div>
+    <div class="col-xs-4">
+      <table class="table table-hover table-inverse">
+      	<tr>
+    	  <h4>商品合計</h4>
+    	  <p class="item-amount"><%= %></p>
+        </tr>
+        <tr>
+    	  <h4>送料</h4>
+    	  <p class="delivery-pay"><%=@order.shipping_cost %></p>
+    	</tr>
+    	<tr>
+    	 <h4>請求金額合計</h4>
+    	 <p class="must-pay-amount"><%= %></p>
+        </tr>
+       </table>
+
+    </div>
+</div>

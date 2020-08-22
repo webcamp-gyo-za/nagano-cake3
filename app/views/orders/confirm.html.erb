@@ -11,11 +11,13 @@
 				</thead>
 				<tbody>
 					<%=@cart_items.each do |cart_item| %>
-					<td><%=attachment_image_tag cart_item.name, :image, size: "50x50", fallback: "no_image.jpg"%>
+					<td><%=attachment_image_tag cart_item.item, :image, size: "25x25", fallback: "no_image.jpg"%>
+						<%= cart_item.item.name %>,
 					</td>
-					<td><%=cart_item.price %></td>
-					<td><%=cart.amount %></td>
-					<td></td>
+					<td><%=cart_item.price.to_s(:delimited) %>円</td><%#= 要確認 %>
+					<td><%=cart_item.amount %></td>
+					<td><%=cart.subtotal.to_s(:delimited) %>円</td>-----
+					<% end %>
 				</tbody>
 			</table>
 		</div>
@@ -24,15 +26,15 @@
 				<tbody>
 					<tr>
 						<th>送料</th>
-						<th>!!!後で記載</th>
+						<th><%= @order.shipping_cost %></th>
 					</tr>
 					<tr>
 						<th>商品合計</th>
-						<th>!!!後で記載</th>
+						<th><%= @order_price　%></th><%#= @item.price 足し算　後で確認 %>
 					</tr>
 					<tr>
 						<th>請求金額</th>
-						<th>!!!後で記載</th>
+						<th><%= @shipping_cost.order_price　%></th><%#= 後で確認 %>
 					</tr>
 				</tbody>
 			</table>
