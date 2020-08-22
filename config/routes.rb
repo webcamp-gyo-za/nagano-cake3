@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     collection do
       delete 'destroy_all'
     end
+  end
 
     resources :orders, only: [:index, :show, :new, :create, :update]
     resources :deliveries, only: [:edit, :index, :create, :update]
