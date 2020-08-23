@@ -1,7 +1,6 @@
 <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
   <!--顧客 -->
   <% if customer_signed_in? %>
-  <p>ようこそ、<%= full_name.name %>さん!</p>
   <li>
     <%= link_to " マイページ", customer_path(current_customer) %>
   </li>
@@ -9,7 +8,7 @@
     <%= link_to " 商品一覧", items_path  %>
   </li>
   <li class="">
-    <%= link_to " カート", cart_items_path%>
+    <%= link_to " カート", cart_items_path %>
   </li>
   <li class="">
     <%= link_to " ログアウト", destroy_customer_session_path, method: :delete %>

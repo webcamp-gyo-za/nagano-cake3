@@ -18,7 +18,7 @@ class Customer < ApplicationRecord
   def full_name
     self.first_name + " " + self.last_name
   end
-  
+
   has_many :deliveries, dependent: :destroy
 
 end
