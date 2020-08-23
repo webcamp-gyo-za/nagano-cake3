@@ -25,11 +25,11 @@ item/show
         </h4>
 
         <p class="item-counts">
-        	<%#= form_for(@cart_item) do |f| %>
-        		<%#= f.hidden_field :item_id %>
-	        	<%#= f.select :quantity, options_for_select((1..30).to_a), include_blank: "個数選択" %>
-	        	<%#= f.submit "カートに入れる",class:"btn btn-primary" %>
-        	<%# end %>
+        	<%= form_for(@cart_item) do |f| %>
+        		<%= f.hidden_field :item_id %>
+	        	<%= f.select :amount, options_for_select((1..30).to_a), include_blank: "個数選択" %>
+	        	<%= f.submit "カートに入れる",class:"btn btn-primary" %>
+        	<% end %>
         </p>
 
 
