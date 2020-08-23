@@ -1,1 +1,17 @@
-<%=render 'genres/genre_serch' %>
+<div class="row">
+	<div class="col-xs-2">
+		<h3>ジャンル検索</h3>
+		<%=render 'admins/genres/genre_search', genres: @genres %>
+	</div>
+	<div class="col-xs-10">
+		<h2>商品一覧(全<%= @items.count %>件)</h2>
+
+		<div  class="flex-item">
+			<% @items.each do |item| %>
+				<%= attachment_image_tag item, :image, size: "150x100", fallback: "no　image"%><br>
+				<%= link_to item.name, item_path(item)%><br>
+				<%= item.price.to_s(:delimited) %><br>
+			<% end %>
+		</div>
+	</div>
+</div>
