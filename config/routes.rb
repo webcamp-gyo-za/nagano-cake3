@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     }
   end
 
-
   namespace :admins do
     get 'homes/top', to: 'homes#top', as:'top'
     resources :orders, only: [:index, :show, :new, :update]
@@ -31,7 +30,7 @@ Rails.application.routes.draw do
   end
 
     resources :orders, only: [:index, :show, :new, :create, :update]
-    resources :deliveries, only: [:edit, :index, :create, :update]
+    resources :deliveries, only: [:edit, :index, :create, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update]
     resources :genres, only: [:show]

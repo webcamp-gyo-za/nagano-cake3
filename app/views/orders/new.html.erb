@@ -1,42 +1,42 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-11">
-			<h3 class="orders-infomation-view">注文情報入力</h3>
+  <div class="row">
+    <div class="col-xs-11">
+      <h3 class="orders-infomation-view">注文情報入力</h3>
 
-			<%=form_for(@order) do |f| %>
-			<h4>支払方法</h4>
-			 <%= f.radio_button :payment_method, "クレジットカード", checked: true  %>
-			 　<%= f.label :クレジットカード %>
+      <%=form_for(@order) do |f| %>
+      <h4>支払方法</h4>
+      <%= f.radio_button :payment_method, "クレジットカード", checked: true  %>
+      　<%= f.label :クレジットカード %>
 
-			 <%= f.radio_button :payment_method, "銀行振込" %>
-			 <%= f.label :銀行振込 %>
-
-
-			 <h4>お届け先</h4>
-			 <%= radio_button_tag "selected_post_number","1", checked: true  %>
-			 <%= f.label :ご自身の住所 %>
-
-			 <%="#{current_customer.post_number} #{current_customer.adress}"%>
-			 <%="#{current_customer.post_number} #{current_customer.adress}"%><br>
-			 <%="#{current_customer.first_name} #{current_customer.last_name}"%>
+      <%= f.radio_button :payment_method, "銀行振込" %>
+      <%= f.label :銀行振込 %>
 
 
-			 <%= radio_button_tag "selected_post_number","2", checked: true  %>
-			  <%= f.label :登録済みの住所から選択 %>
-			 <%#ここに選択窓%>
-			 <%= f.collection_select(:delivery_id, @deliveries, :id, :address) %><%#collection ここ修正必要%>
+      <h4>お届け先</h4>
+      <%= radio_button_tag "selected_post_number","1", checked: true  %>
+      <%= f.label :ご自身の住所 %>
+
+      <%="#{current_customer.post_number} #{current_customer.address}"%>
+      <%="#{current_customer.post_number} #{current_customer.address}"%><br>
+      <%="#{current_customer.first_name} #{current_customer.last_name}"%>
 
 
-			 <%= radio_button_tag "selected_post_number","3", checked: true  %>
-			  <%= f.label :新しいお届け先 %>
-			  <h5 class="new_post_number">郵便番号(ハイフンなし)</h5><%=f.text_field :post_number %>
-			 <h5 class="new_adress">住所</h5><%=f.text_field :adress %>
-			 <h5 class="new_name">宛名</h5><%=f.text_field :name %>
+      <%= radio_button_tag "selected_post_number","2", checked: true  %>
+      <%= f.label :登録済みの住所から選択 %>
+      <%#ここに選択窓%>
+      <%= f.collection_select(:delivery_id, @deliveries, :id, :address) %><%#collection ここ修正必要%>
 
 
-			 <%=f.submit "確認画面へ進む" %>
-			 <% end %>
-		</div>
-		<div class="col-xs-1"></div>
-	</div>
+      <%= radio_button_tag "selected_post_number","3", checked: true  %>
+      <%= f.label :新しいお届け先 %>
+      <h5 class="new_post_number">郵便番号(ハイフンなし)</h5><%=f.text_field :post_number %>
+      <h5 class="new_address">住所</h5><%=f.text_field :address %>
+      <h5 class="new_name">宛名</h5><%=f.text_field :name %>
+
+
+      <%=f.submit "確認画面へ進む" %>
+      <% end %>
+    </div>
+    <div class="col-xs-1"></div>
+  </div>
 </div>
