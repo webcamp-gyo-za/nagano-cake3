@@ -7,9 +7,9 @@ Rails.application.routes.draw do
 
   devise_scope :admins do
     devise_for :admins, controllers: {
-      registrations: 'admins/registrations',
-      passwords: 'admins/passwords',
-      sessions: 'admins/sessions'
+      registrations: 'admins/admins/registrations',
+      passwords: 'admins/admins/passwords',
+      sessions: 'admins/admins/sessions'
     }
   end
 
