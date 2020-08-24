@@ -4,6 +4,9 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :cart_items
+  has_many :items, through: :cart_items
+
   with_options presence: true do
     validates :last_name
     validates :first_name
@@ -16,7 +19,7 @@ class Customer < ApplicationRecord
   end
 
   def full_name
-    self.first_name + " " + self.last_name
+    self.last_name + " " + self.first_name
   end
 
   has_many :deliveries, dependent: :destroy
