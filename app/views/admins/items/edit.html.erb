@@ -4,7 +4,7 @@
 
 	<div class="item_editform">
 		<%#=render 'info', item: @item %>
-		<%= form_for(@item, url:admins_items_path(@item)) do |f| %>
+		<%= form_for(@item, url: admins_item_path(@item)) do |f| %>
 
 			<div class="col-xs-4">
 				<div class="item_leftfield">
@@ -37,7 +37,7 @@
 			</div>
 			<div class="col-xs-4">
 				<p class="item_updatebtn">
-    				<%= f.submit "登録", class: "btn btn-primary" %>
+    				<%= f.submit "更新", class: "btn btn-primary" %>
 				</p>
 			</div>
 		<% end %>

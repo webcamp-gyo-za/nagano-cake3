@@ -28,7 +28,7 @@ class Admins::ItemsController < ApplicationController
 
 	def update
 		if @item.update(admin_item_params)
-			redirect_to admins_item_path
+			redirect_to admins_item_path(@item)
 		else
 			render :edit
 		end
