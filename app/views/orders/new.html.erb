@@ -5,32 +5,33 @@
 
 			<%=form_for(@order) do |f| %>
 			<h4>支払方法</h4>
-			 <label><%= f.radio_button :payment_method, "クレジットカード", checked: true  %>クレジットカード</label>
+			 <%= f.radio_button :payment_method, "クレジットカード", checked: true  %>
+			 　<%= f.label :クレジットカード %>
 
-			 <label><%= f.radio_button :payment_method, "銀行振込" %>銀行振込</label><%#ラジオボタン_tag %>
+			 <%= f.radio_button :payment_method, "銀行振込" %>
+			 <%= f.label :銀行振込 %>
+
 
 			 <h4>お届け先</h4>
-			 <input class="form-check-input" type="rudio" name="ご自身の住所" value="0">ご自身の住所
-			 <label class="form-check-label"></label>
-			 <%#label><%#=radio_button_tag "ご自身の住所","1", checked: true  %>ご自身の住所<%#/label>
+			 <%= radio_button_tag "selected_post_number","1", checked: true  %>
+			 <%= f.label :ご自身の住所 %>
 
 			 <%="#{current_customer.post_number} #{current_customer.adress}"%>
 			 <%="#{current_customer.post_number} #{current_customer.adress}"%><br>
 			 <%="#{current_customer.first_name} #{current_customer.last_name}"%>
 
-			 <input class="form-check-input" type="rudio" name="登録済み住所から選択" value="1">登録済み住所から選択
-			 <label class="form-check-label"></label>
 
-			 <%#label><%= radio_button_tag :adress, "登録済み住所" %>登録済み住所<%#/label>
-			 <%= collection_select(:delivery_id, @deliveries, :id, :address) %>
+			 <%= radio_button_tag "selected_post_number","2", checked: true  %>
+			  <%= f.label :登録済みの住所から選択 %>
 			 <%#ここに選択窓%>
-			 <%= collection_select(:delivery_id, @deliveries, :id, :address) %>
+			 <%= f.collection_select(:delivery_id, @deliveries, :id, :address) %><%#collection ここ修正必要%>
 
-			 <%#label><%#= radio_button_tag :adress, "新しいお届け先" %>新しいお届け先<%#/label>
 
-			 <h5 class="new_post_number">郵便番号(ハイフンなし)<%=f.text_field :post_number %></h5>
-			 <h5 class="new_adress">住所<%=f.text_field :adress %></h5>
-			 <h5 class="new_name">宛名<%=f.text_field :name%></h5>
+			 <%= radio_button_tag "selected_post_number","3", checked: true  %>
+			  <%= f.label :新しいお届け先 %>
+			  <h5 class="new_post_number">郵便番号(ハイフンなし)</h5><%=f.text_field :post_number %>
+			 <h5 class="new_adress">住所</h5><%=f.text_field :adress %>
+			 <h5 class="new_name">宛名</h5><%=f.text_field :name %>
 
 
 			 <%=f.submit "確認画面へ進む" %>

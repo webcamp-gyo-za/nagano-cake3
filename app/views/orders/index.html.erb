@@ -27,7 +27,7 @@
 						</td>
 						<td><%= order.order_price.to_s(:delimited) %></td>
 						<td><%= order.status %></td>
-						<td><%=link_to %></td>
+						<td><%=link_to "表示画面",order_path(order.id), class: "btn btn-primary" %></td>
 					</tr>
 					<% end %>
 				</tbody>

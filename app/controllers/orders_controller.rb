@@ -45,12 +45,16 @@ class OrdersController < ApplicationController
   	@order=Order.find(params[:id])
   	@cart_item=current_customer.cart_item
 
+    #order= []  :中身のない配列　order=Order.new に近いイメージ 初期化の１番の目的はnilから脱却すること
+    #
+
   @order_price　= 0
-  @cart_items.each do |f|
-     @order_price +=f.subtotal
+  　@cart_items.each do |cart_item|
+     @order_price +=cart_item.subtotal
+     #@order_price=@order_price+cart_item.subtotal 小計
   end
 
-  @shipping_cost.order_price = @order_price + 800
+  @shipping_cost.order_price = @order_price + 800 #請求
  end
 
   
