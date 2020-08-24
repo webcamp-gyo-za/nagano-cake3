@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get 'order/confirm', to: 'orders#confirm'
       root to: 'items#home'
       get 'item/about', to: 'items#about'
+      get 'search/search'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
