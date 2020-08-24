@@ -39,6 +39,12 @@ class OrdersController < ApplicationController
   def index
   	@order=Order.where(customer_id :current_customer.id).order(created_at: :desc)
   	@item=@order.item
+    #
+    #
+    #@ordernumber = 0
+    #@cart_items.each do |cart_item|
+    #@ordernumber+=@cart_item.amount
+      #end
   end
 
   def show

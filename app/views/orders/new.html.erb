@@ -24,7 +24,9 @@
 			 <%= radio_button_tag "selected_post_number","2", checked: true  %>
 			  <%= f.label :登録済みの住所から選択 %>
 			 <%#ここに選択窓%>
-			 <%= f.collection_select(:delivery_id, @deliveries, :id, :address) %><%#collection ここ修正必要%>
+
+
+			 <%=select_tag "select", options_from_collection_for_select(customer, :post_number,:adress,:first_name,:last_name) %>
 
 
 			 <%= radio_button_tag "selected_post_number","3", checked: true  %>

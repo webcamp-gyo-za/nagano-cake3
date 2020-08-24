@@ -12,7 +12,7 @@ class CartItem < ApplicationRecord
 
 
 	#def subtotal
-		#(self.item.price*self.amount*1.1).round
+		#(self.item.price*self.amount*1.1).round　こっちか正しい？？？s
 	#end
 
 end
