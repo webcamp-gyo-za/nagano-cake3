@@ -6,7 +6,7 @@
       <%=form_for(@order) do |f| %>
       <h4>支払方法</h4>
       <%= f.radio_button :payment_method, "クレジットカード", checked: true  %>
-      　<%= f.label :クレジットカード %>
+      <%= f.label :クレジットカード %>
 
       <%= f.radio_button :payment_method, "銀行振込" %>
       <%= f.label :銀行振込 %>
@@ -23,8 +23,7 @@
 
       <%= radio_button_tag "selected_post_number","2", checked: true  %>
       <%= f.label :登録済みの住所から選択 %>
-      <%#ここに選択窓%>
-      <%= f.collection_select(:delivery_id, @deliveries, :id, :address) %><%#collection ここ修正必要%>
+      <%= f.collection_select(:delivery_id, @deliveries, :id, :address) %>
 
 
       <%= radio_button_tag "selected_post_number","3", checked: true  %>
