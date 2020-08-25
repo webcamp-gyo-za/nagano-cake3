@@ -53,28 +53,28 @@ ActiveRecord::Schema.define(version: 2020_08_22_082819) do
   end
 
   create_table "deliveries", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.string "post_number", default: "", null: false
-    t.string "address", default: "", null: false
-    t.text "name", default: "", null: false
+    t.integer "customer_id"
+    t.string "post_number"
+    t.string "address"
+    t.text "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.boolean "is_active", default: true, null: false
+    t.string "name"
+    t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "genre_id", null: false
-    t.string "name", default: "", null: false
-    t.string "image_id", default: "", null: false
-    t.text "introduction", default: "", null: false
-    t.integer "price", null: false
-    t.boolean "is_active", default: true, null: false
+    t.integer "genre_id"
+    t.string "name"
+    t.string "image_id"
+    t.text "introduction"
+    t.integer "price"
+    t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,14 +85,14 @@ ActiveRecord::Schema.define(version: 2020_08_22_082819) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.string "post_number", default: "", null: false
-    t.string "address", default: "", null: false
-    t.string "name", default: "", null: false
-    t.integer "shipping_cost", default: 800, null: false
-    t.integer "order_price", null: false
-    t.integer "status", default: 0, null: false
-    t.integer "payment_method", default: 0, null: false
+    t.integer "customer_id"
+    t.string "post_number"
+    t.string "address"
+    t.string "name"
+    t.integer "shipping_cost"
+    t.integer "order_price"
+    t.integer "status"
+    t.integer "payment_method"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
