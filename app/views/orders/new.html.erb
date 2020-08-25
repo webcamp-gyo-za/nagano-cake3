@@ -26,7 +26,8 @@
 			 <%#ここに選択窓%>
 
 
-			 <%=select_tag "select", options_from_collection_for_select(customer, :post_number,:adress,:first_name,:last_name) %>
+			 <%=select_tag "select", options_from_collection_for_select(@delivery.where(customer_id :current_customer.id), :post_number, :address, :name) %>
+			 <%#post_numberからlast_nameを代入（モデルに値を記入）する%>
 
 
 			 <%= radio_button_tag "selected_post_number","3", checked: true  %>

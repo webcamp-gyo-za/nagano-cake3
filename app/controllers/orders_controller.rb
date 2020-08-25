@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   	@order=Order.new
   	@order.customer_id=current_customer.id
   	#@user=currrent_user
+    @delivery=Delivery.all
   end
 
   def confirm
@@ -66,6 +67,10 @@ class OrdersController < ApplicationController
   
 
   def thanks
+  end
+
+  def order_paramas
+    params.require(:order).permit(:payment_method, :post_number, :adress, :name)
   end
 
 end

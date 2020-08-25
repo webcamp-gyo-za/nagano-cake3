@@ -18,7 +18,7 @@
 		<% @cart_items.each do |cart_item| %>
 			<td>
 				<%= link_to item_path(cart_item.item) do%>
-				<%= attachment_image_tag(cart_item.item, :image, :fill, 100, 100, fallback: "no_img.jpg") %>
+				<%= attachment_image_tag(cart_item.item, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
 				<%= cart_item.item.name %>
 				<% end %>
 			</td>
