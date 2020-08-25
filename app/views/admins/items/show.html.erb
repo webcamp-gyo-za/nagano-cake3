@@ -1,38 +1,38 @@
 <div class="row">
   <h2>商品詳細</h2><br>
-    <div class="col-xs-4">
-      <%= attachment_image_tag @item, :image, size: "300x300", fallback: "no image" %><br>
-    </div>
-
-    <div class="col-xs-8">
-      <h4 style="margin-bottom: 30px;">商品名
-        <%= @item.name %>
-      </h4>
-
-      <div style="display: flex;">
-        <h4 style="margin: 0 30px 30px 0;">商品説明</h4>
-        <div style="overflow-wrap: break-word;　word-wrap: break-word; width: 300px;">
-          <%= @item.introduction %>
-        </div>
-      </div>
-
-        <h4 style="margin-bottom: 30px;">ジャンル
-          <%= @item.genre.name %>
-        </h4>
-
-        <h4 style="margin-bottom: 30px;">税抜価格
-          <%= @item.price %>円
-        </h4>
-
-        <h4 style="margin-bottom: 30px;">販売ステータス
-          	<% if @item.is_active? %>
-				<p>販売中</p>
-			<% else %>
-				<p>販売不可</p>
-			<% end %>
-        </h4>
-
-        <%= link_to '編集', edit_admins_item_path(@item) ,class: "btn btn-primary " %>
-    </div>
+  <div class="col-xs-4">
+    <%= attachment_image_tag @item, :image, size: "200x200", fallback: "no_image.jpg" %><br>
   </div>
+
+  <div class="col-xs-8">
+    <h4 style="margin-bottom: 30px;">商品名
+      <%= @item.name %>
+    </h4>
+
+    <div style="display: flex;">
+      <h4 style="margin: 0 30px 30px 0;">商品説明</h4>
+      <div style="overflow-wrap: break-word;　word-wrap: break-word; width: 300px;">
+        <%= @item.introduction %>
+      </div>
+    </div>
+
+    <h4 style="margin-bottom: 30px;">ジャンル
+      <%= @item.genre.name %>
+    </h4>
+
+    <h4 style="margin-bottom: 30px;">税抜価格
+      <%= @item.price %>円
+    </h4>
+
+    <h4 style="margin-bottom: 30px;">販売ステータス
+      <% if @item.is_active? %>
+      <p>販売中</p>
+      <% else %>
+      <p>販売不可</p>
+      <% end %>
+    </h4>
+
+    <%= link_to '編集', edit_admins_item_path(@item) ,class: "btn btn-primary " %>
+  </div>
+</div>
 </div>
