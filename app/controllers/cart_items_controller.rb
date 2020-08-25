@@ -27,7 +27,8 @@ class CartItemsController < ApplicationController
     @cart_items = @customer.cart_items.all
   end
 
-  def destory
+
+  def destroy
     @cart_item.destroy
     redirect_to cart_items_path
   end
