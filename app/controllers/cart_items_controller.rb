@@ -17,7 +17,7 @@ class CartItemsController < ApplicationController
         flash[:danger] = 'カートに商品を追加できませんでした。'
       end
     else
-        @current_item.quantity += params[:quantity].to_i
+        @current_item.amount += params[:amount].to_i
         @current_item.update(cart_item_params)
         redirect_to cart_items_path
       end
@@ -28,7 +28,7 @@ class CartItemsController < ApplicationController
   end
 
   def destory
-    cart_item.destroy
+    @cart_item.destroy
     redirect_to cart_items_path
   end
 

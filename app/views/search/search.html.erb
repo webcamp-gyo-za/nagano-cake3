@@ -9,7 +9,7 @@
 
 		<div  class="flex-item">
 			<% @genre_items.each do |item| %>
-				<%= attachment_image_tag item, :image, size: "150x100", fallback: "no　image"%><br>
+				<%= attachment_image_tag item, :image, size: "150x100", fallback: "no_image.jpg"%><br>
 				<%= link_to item.name, item_path(item)%><br>
 				<%= item.price.to_s(:delimited) %><br>
 			<% end %>
