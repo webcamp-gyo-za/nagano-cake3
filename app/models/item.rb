@@ -8,6 +8,7 @@ class Item < ApplicationRecord
 	has_many :cart_items, dependent: :destroy
 	has_many :oder_details, dependent: :destroy
 	has_many :customer, through: :cart_items
+	has_many :items, through: :order_details
 	belongs_to :genre
 	attachment :image
 end

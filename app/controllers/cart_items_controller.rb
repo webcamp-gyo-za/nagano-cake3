@@ -14,11 +14,10 @@ class CartItemsController < ApplicationController
       else
         @carts_items = @customer.cart_items.all
         render 'index'
-        flash[:danger] = 'カートに商品を追加できませんでした。'
       end
     else
-        @current_item.amount += params[:amount].to_i
-        @current_item.update(cart_item_params)
+        @current_item.amount += params[:cart_item][:amount].to_i
+        @current_item.save
         redirect_to cart_items_path
       end
   end
