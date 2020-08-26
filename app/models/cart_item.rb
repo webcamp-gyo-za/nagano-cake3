@@ -7,7 +7,8 @@ class CartItem < ApplicationRecord
 
 
 	def subtotal
-		(selfitem.price*self.amount*1.1).round
+		#binding.pry
+		(self.item.price.to_f*self.amount.to_f*1.1).round.to_i
 	end
 
 

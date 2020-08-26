@@ -5,7 +5,9 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cart_items
+  has_many :orders
   has_many :items, through: :cart_items
+  has_many :deliveries, dependent: :destroy
 
   with_options presence: true do
     validates :last_name
@@ -22,6 +24,5 @@ class Customer < ApplicationRecord
     self.last_name + " " + self.first_name
   end
 
-  has_many :deliveries, dependent: :destroy
 
 end

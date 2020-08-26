@@ -26,19 +26,18 @@
 				<tbody>
 					<tr>
 						<th>送料</th>
-						<th><%= @order.shipping_cost %></th>
+						<th>800</th>
 					</tr>
 					<tr>
 						<th>商品合計</th>
-						<th><%= @order_price　%></th><%#= @item.price 足し算　後で確認 %>
+						<th><%= @item_all_price %></th><%#= @item.price 足し算 後で確認 %>
 					</tr>
 					<tr>
-						<th>請求金額</th>
-						<th><%= @shipping_cost.order_price　%></th><%#= 後で確認 %>
+						<th>請求料金</th>
+						<th><%= @order.order_price %></th><%#= 後で確認 %>
 					</tr>
 				</tbody>
 			</table>
-			<% end %>
 		</div>
 	</div>
 </div>
@@ -55,7 +54,9 @@
 	<div class="row">
 		<div class="col-xs-3"></div>
 		<div class="col-xs-6">
+			<%=form_for(@order) do |f| %>
 			<%=f.submit "購入を確定する" %>
+			<% end %>
 		</div>
 		<div class="col-xs-3"></div>
 	</div>
