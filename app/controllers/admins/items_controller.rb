@@ -2,13 +2,15 @@ class Admins::ItemsController < ApplicationController
 	before_action :authenticate_admin!
 	before_action :set_admin_item, only: [:show, :edit, :update]
 
+	PER = 10
+
 	def new
 		@item = Item.new
 		@genre = @item.genre
 	end
 
 	def index
-		@items = Item.all
+		@items = Item.page(params[:page]).per(PER)
 	end
 
 	def show

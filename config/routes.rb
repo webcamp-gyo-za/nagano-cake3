@@ -13,8 +13,8 @@ Rails.application.routes.draw do
     }
   end
 
+  get 'admins/top', to: 'admins#top', as:'admins_top'
   namespace :admins do
-    get 'admins/top', to: 'admins#top', as:'top'
     resources :orders, only: [:index, :show, :new, :update]
     resources :deliveries, only: [:edit, :index, :update]
     resources :genres, only:[:index, :edit, :create, :update]
