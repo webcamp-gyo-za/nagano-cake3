@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
+
+    PER = 8
+
   def index
-  	@items = Item.all
+  	@items = Item.page(params[:page]).per(PER)
     @genres = Genre.all
   end
 

@@ -1,6 +1,6 @@
 <div class="row">
 
-<h2 class="mypage"><i class="fas fa-user"></i>会員一覧</h3>
+<h2 class="mypage"></i>会員一覧</h3>
 
 	<table class="table table-hover table-inverse">
 		<thead>
@@ -19,9 +19,9 @@
 					<td><%= link_to customer.full_name, admins_customer_path(customer) %></td>
 					<td><%= customer.email %></td>
 					<td><% if customer.is_deleted? %>
-							<p>有効</p>
-						<% else %>
 							<p>無効</p>
+						<% else %>
+							<p>有効</p>
 						<% end %>
 					</td>
 				</tr>
