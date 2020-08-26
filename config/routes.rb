@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :deliveries, only: [:edit, :index, :update]
     resources :genres, only:[:index, :edit, :create, :update]
     resources :items, only: [:new, :index,:edit, :show, :create, :update]
-    resources :customers, only: [:index, :show, :new, :edit, :update]
+    resources :customers, only: [:index, :show, :new, :edit, :update,]
   end
 
 
@@ -32,13 +32,13 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :new, :create, :update]
     resources :deliveries, only: [:edit, :index, :create, :update, :destroy]
     resources :items, only: [:index, :show]
-    resources :customers, only: [:show, :edit, :update]
+    resources :customers, only: [:show, :edit, :update,:destroy]
     resources :genres, only: [:show]
-      get 'order/confirm', to: 'orders#confirm'
-      root to: 'items#home'
-      get 'item/about', to: 'items#about'
-      get 'search/search'
-
+    get 'order/confirm', to: 'orders#confirm'
+    root to: 'items#home'
+    get 'item/about', to: 'items#about'
+    get 'search/search'
+    get 'withdrawal' => 'customers#withdrawal'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

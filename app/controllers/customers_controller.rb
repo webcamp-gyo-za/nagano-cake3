@@ -1,8 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :ensure_correct_customer, {only: [:show, :edit]}
-
   def show
-    @customer = Customer.find(params[:id])
     @customer = current_customer
   end
 
@@ -20,15 +17,21 @@ class CustomersController < ApplicationController
     end
   end
 
+  def withdrawal
+  end
+
+  def destroy
+    current_customer.update(is_deleted: true, withdrawal_status: 1)
+    @customer = Customer.find(params[:id])
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+  end
+
   private
   def customer_params
   params.require(:customer).permit(:is_enabled, :last_name, :first_name, :last_kana, :first_kana,
                                   :phone_number, :email, :password, :post_number, :address)
   end
-  def ensure_correct_customer
-    @customer = Customer.find(params[:id])
-    if current_customer.id != @customer.id
-      redirect_to root_path
-    end
-  end
+
 end
