@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     get 'item/about', to: 'items#about'
     get 'search/search'
     get 'withdrawal' => 'customers#withdrawal'
+    put "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

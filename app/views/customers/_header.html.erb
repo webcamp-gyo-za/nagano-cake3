@@ -1,56 +1,65 @@
-<ul>
-  <% if customer_signed_in? %>
-    <p>ようこそ<%= current_customer.full_name %>さん！</p>
-  <% end %>
-</ul>
-<ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-  <!--顧客 -->
-  <% if customer_signed_in? %>
-  <li>
-    <%= link_to " マイページ", customer_path(current_customer) %>
-  </li>
-  <li class="">
-    <%= link_to " 商品一覧", items_path  %>
-  </li>
-  <li class="">
-    <%= link_to " カート", cart_items_path %>
-  </li>
-  <li class="">
-    <%= link_to " ログアウト", destroy_customer_session_path, method: :delete %>
-  </li>
-  <!--管理者-->
-  <% elsif admin_signed_in?%>
-  <li>
-    <%= link_to " 商品一覧", admins_items_path(current_customer) %>
-  </li>
-  <li class="">
-    <%= link_to " 会員一覧", admins_customers_path %>
-  </li>
-  <li class="">
-    <%= link_to " 注文履歴一覧", cart_items_path%>
-  </li>
-  <li>
-    <%= link_to "ジャンル一覧", admins_genres_path%>
-  </li>
-  <li class="">
-    <%= link_to " ログアウト", destroy_admin_session_path, method: :delete %>
-  </li>
-  <!--非ログイン -->
-  <% else %>
-  <li class="">
-    <%= link_to " About", item_about_path %>
-  </li>
-  <li class="">
-    <%= link_to " 商品一覧", items_path %>
-  </li>
-  <li class="">
-    <%= link_to " 新規登録", new_customer_registration_path %>
-  </li>
-  <li class="">
-    <%= link_to " ログイン", new_customer_session_path %>
-  </li>
-  <li class="">
-    <%= link_to " 管理者ログイン", new_admin_session_path %>
-  </li>
-  <% end %>
-</ul>
+<header class="navbar navbar-fixed-top header">
+  <div class="container">
+    <nav class="nav navbar-nav navbar-left">
+      <span class="header__left">Nagano-Cake</span>
+    </nav>
+    <nav class="nav navbar-nav navbar-right">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <% if customer_signed_in? %>
+          <li class="login_name">ようこそ<%= current_customer.full_name %>さん！</li>
+          <% end %>
+          <!--顧客 -->
+          <% if customer_signed_in? %>
+          <li>
+            <%= link_to " マイページ", customer_path(current_customer), class: "btn btn-default navbar-btn header__right" %>
+          </li>
+          <li>
+            <%= link_to " 商品一覧", items_path, class: "btn btn-default navbar-btn header__right" %>
+          </li>
+          <li>
+            <%= link_to " カート", cart_items_path, class: "btn btn-default navbar-btn header__right" %>
+          </li>
+          <li>
+            <%= link_to " ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-default navbar-btn header__right" %>
+          </li>
+          <!--管理者-->
+          <% elsif admin_signed_in?%>
+          <li>
+            <%= link_to " 商品一覧", admins_items_path(current_customer), class: "btn btn-default navbar-btn header__right" %>
+          </li>
+          <li>
+            <%= link_to " 会員一覧", admins_customers_path, class: "btn btn-default navbar-btn header__right" %>
+          </li>
+          <li>
+            <%= link_to " 注文履歴一覧", cart_items_path, class: "btn btn-default navbar-btn header__right" %>
+          </li>
+          <li>
+            <%= link_to "ジャンル一覧", admins_genres_path, class: "btn btn-default navbar-btn header__right" %>
+          </li>
+          <li>
+            <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-default navbar-btn header__right" %>
+          </li>
+          <!--非ログイン -->
+          <% else %>
+          <li>
+            <%= link_to " About", item_about_path, class: "btn btn-default navbar-btn header__right" %>
+          </li>
+          <li>
+            <%= link_to " 商品一覧", items_path, class: "btn btn-default navbar-btn header__right" %>
+          </li>
+          <li>
+            <%= link_to " 新規登録", new_customer_registration_path, class: "btn btn-default navbar-btn header__right"%>
+          </li>
+          <li>
+            <%= link_to " ログイン", new_customer_session_path, class: "btn btn-default navbar-btn header__right" %>
+          </li>
+          <li>
+            <%= link_to " 管理者ログイン", new_admin_session_path, class: "btn btn-default navbar-btn header__right" %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>

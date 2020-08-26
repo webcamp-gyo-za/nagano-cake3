@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row withdrawal-content">
   <div class="col-lg-12 text-center">
     <h2 class="title">本当に退会しますか？</h2>
     <p>退会すると、会員登録情報や<br>
@@ -6,6 +6,6 @@
       退会する場合は、「退会する」をクリックしてください。<br>
     </p>
     <%= link_to "退会しない", root_path, class: "btn btn-primary" %>
-    <%= link_to "退会する", @customer, method: :delete, class: "btn btn-danger" %>
+    <%= link_to "退会する", customers_hide_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
   </div>
 </div>
