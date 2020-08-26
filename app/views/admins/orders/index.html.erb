@@ -17,6 +17,8 @@
 						    <%= order.order_details.each do |order_detil| %>
 						    <%= order_detail.ordernumber %><br>
 							<% end %>
+
+							<%= order.order_details.all.sum(:number) %>,<%#個数の積み上げはsum 要確認 %>
 						</th>
 						<th><%= order.order_details.number %></th>
 						<th><%= order.status %></th>
