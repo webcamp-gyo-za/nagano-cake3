@@ -15,7 +15,7 @@
 	<tbody>
 		<% sum_all = 0 %>
 		<tr>
-		<% @cart_items.each do |cart_item| %>
+		<% current_customer.cart_items.each do |cart_item| %>
 			<td>
 				<%= link_to item_path(cart_item.item) do%>
 				<%= attachment_image_tag(cart_item.item, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
@@ -32,7 +32,7 @@
         		<% end %>
         	</td>
         	<td>
-        		<%= sum_item = price_include_tax(cart_item.item.price).to_i * cart_item.amount %>円
+        		<%= sum_item = price_include_tax(cart_item.item.price).to_i * cart_item.amount.to_i %>円
         		<% sum_all += sum_item %>
         	</td>
         	<td>

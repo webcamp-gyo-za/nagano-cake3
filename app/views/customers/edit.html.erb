@@ -37,12 +37,16 @@
   <hr>
   <div style="text-align:center;">
     <%= f.submit "変更を保存する", class:"btn btn-success", style: "display:inline-block" %>
+    <div class="row">
+      <div class="btn-content">
+        <%= link_to customer_path(@customer) do %>
+        <span class="glyphicon glyphicon-chevron-left">マイページ</span>
+        <% end %>
+      </div>
+      <div class="btn-content">
+        <%= link_to "退会する", withdrawal_path, class: "btn btn-danger" %>
+      </div>
+    </div>
   </div>
-
-  <%= link_to customer_path(@customer) do %>
-  <span class="glyphicon glyphicon-chevron-left">マイページ</span>
   <% end %>
-
-  <% end %>
-</div>
 </div>

@@ -1,8 +1,8 @@
 <div class="row">
   <h3>配送先編集</h3>
 
-  <%= form_for(@delivary) do |f| %>
-  <table class="table table-bordered">
+  <%= form_for(@delivery, url:delivery_path(@delivery), method: :patch) do |f| %>
+  <table class="table-content">
     <tr>
       <td>郵便番号</td>
       <td><%= f.text_field :post_number, autofocus: true %></td>
@@ -12,12 +12,10 @@
       <td><%= f.text_field :address, autofocus: true %></td>
     </tr>
     <tr>
-      <td>電話番号</td>
-      <td><%= f.text_field :phone_number, autofocus: true %></td>
-    </tr>
-    <tr>
       <td>(宛名)</td>
       <td><%= f.text_field :name, autofocus: true %></td>
     </tr>
   </table>
+  <%= f.submit "編集する", class:"btn btn-primary btn-md" %>
+  <% end %>
 </div>
