@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
 	belongs_to :customer
-	belongs_to :delivery
+
 	has_many :order_details, dependent: :destroy
 
 	validates :post_number, presence: true
