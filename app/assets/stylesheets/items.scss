@@ -1,3 +1,61 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.flex-item {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+}
+
+.flex-item-content {
+	margin: 10px;
+}
+
+.index-item-name {
+	font-size: 20px;
+	margin-top: 10px;
+}
+
+.item-img {
+	margin-top: 50px;
+}
+
+.item-detail {
+	margin-bottom: 20px auto;
+}
+
+.item-detail-content {
+	font-size: 40px;
+	margin-bottom: 20px;
+}
+
+.item-detail-flexbox {
+	display: flex;
+	word-break: break-word;
+	flex-wrap: wrap;
+	font-size: 15px;
+	margin-bottom: 30px;
+	width: 80%;
+}
+
+.item-detail-flex-content {
+	text-align: left;
+	width: 100%
+}
+
+.item-detail-price {
+	font-size: 30px;
+	margin: 30px auto;
+}
+
+.item-cart-b {
+	margin-left: 40px;
+}
+
+
+
+
+
+
+

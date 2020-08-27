@@ -2,3 +2,52 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.show-item-image {
+	margin-bottom: 10px;
+}
+
+.admins-item-img {
+	margin-top: 50px;
+}
+
+.admins-item-detail {
+	margin-bottom: 20px auto;
+	display: flex;
+}
+
+.admins-itemdetail-title {
+	font-size: 15px;
+	flex-direction: row;
+
+}
+
+.admins-item-detail-content {
+	font-size: 40px;
+	margin-bottom: 20px;
+	flex-direction: row;
+}
+
+.admins-item-detail-flexbox {
+	display: flex;
+	word-break: break-word;
+	flex-wrap: wrap;
+	font-size: 15px;
+	margin-bottom: 30px;
+	width: 80%;
+}
+
+.admins-item-detail-flex-title {
+	font-size: 15px;
+	text-align: left;
+	width: 100%
+}
+
+.admins-item_detail_flex-content {
+	text-align: left;
+	width: 100%
+}
+
+
+
+
+

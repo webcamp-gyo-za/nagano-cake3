@@ -9,10 +9,13 @@
 
     <div class="flex-item">
       <% @genre_items.each do |item| %>
-      <%= attachment_image_tag item, :image, size: "150x100", fallback: "no_image.jpg"%><br>
-      <%= link_to item.name, item_path(item)%><br>
-      <%= item.price.to_s(:delimited) %><br>
+      <div class="flex-item-content">
+        <%= attachment_image_tag item, :image, size: "200x150", fallback: "no_image.jpg"%>
+        <div class="genres-item-name"><%= link_to item.name, item_path(item)%></div>
+        ¥<%= item.price.to_s(:delimited) %><br>
+      </div>
       <% end %>
+      <%= paginate @genre_items %>
     </div>
   </div>
 </div>
