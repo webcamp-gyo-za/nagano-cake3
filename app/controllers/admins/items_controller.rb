@@ -2,7 +2,7 @@ class Admins::ItemsController < ApplicationController
 	before_action :authenticate_admin!
 	before_action :set_admin_item, only: [:show, :edit, :update]
 
-	PER = 10
+	PER = 8
 
 	def new
 		@item = Item.new

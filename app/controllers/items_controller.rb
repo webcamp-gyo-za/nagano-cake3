@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-    PER = 8
+    PER = 6
 
   def index
   	@items = Item.page(params[:page]).per(PER)
@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
   def show
   	@item = Item.find(params[:id])
     @cart_item = CartItem.new(item_id: @item.id)
+    @genres = Genre.all
   end
 
   def home

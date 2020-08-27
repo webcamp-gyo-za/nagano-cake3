@@ -1,8 +1,10 @@
 class Admins::CustomersController < ApplicationController
 	before_action :authenticate_admin!
 
+	PER = 8
+
 	def index
-		@customers = Customer.all
+		@customers = Customer.page(params[:page]).per(PER)
 	end
 
 	def show
