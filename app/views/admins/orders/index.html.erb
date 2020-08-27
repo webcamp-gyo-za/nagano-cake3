@@ -1,30 +1,23 @@
 <div class="row">
-	<div class="col-xs-12">
-		<h2 class="admin's_order-indetail-view">注文履歴一覧</h2>
+		<h2 class="admins_order-indetail-view">注文履歴一覧</h2>
 		   <table class="table table-hover table-bordered table-condensed">
-				<tbody>
-					<%=@orders.each do |order| %>
+				<thead>
 					<tr>
 						<th>購入日時</th>
 						<th>購入者</th>
 						<th>注文個数</th>
 						<th>注文ステータス</th>
-					</tr>　
-					<tr>
-						<th><%= order.created_at.strftime('%Y/%m/%d') %></th>
-						<th><%= order.customer.full_name %></th><%#= customer.name %>
-						<th>
-						    <%= order.order_details.each do |order_detil| %>
-						    <%= order_detail.ordernumber %><br>
-							<% end %>
-
-							<%= order.order_details.all.sum(:number) %>,<%#個数の積み上げはsum 要確認 %>
-						</th>
-						<th><%= order.order_details.number %></th>
-						<th><%= order.status %></th>
 					</tr>
+				</thead>
+				<tbody>
+					<% @orders.each do |order| %>
+						<tr>
+							<td><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+							<td><%= order.customer.full_name %></th>
+							<td><%= order.order_details.pluck(:number).sum %></td>
+							<td><%= order.status %></td>
+						</tr>
 					<% end %>
 				</tbody>
 		   </table>
-	</div>
 </div>

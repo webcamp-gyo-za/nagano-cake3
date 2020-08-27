@@ -1,25 +1,23 @@
 class Admins::OrdersController < ApplicationController
 
 	def index
-	  @orders=Order.all(created_at: :desc)
-	  @order_detail=@order.order_detail
+		@orders = Order.all.order(created_at: :desc)
 	end
 
 	def show
-		@order=Order.find(params[:id])
-		@order_detail=@order.order_detail
+		@order = Order.find(params[:id])
+		@order_details = @order.order_details
 	end
 
 	def update
-		@order=Order.find(params[:id])
+		@order = Order.find(params[:id])
 		if @order.update(order_params)
-			redirect_to x_path
+			redirect_to admins_orders_path
 		else
 		   render "show"
-		   @order_detail=@order.order_detail
+		   @order_detail = @order.order_detail
 		end
-
-    end
+ 	end
 
     private
     def order_params
