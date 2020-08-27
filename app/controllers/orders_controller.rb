@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
 
   def confirm
     if params[:selected_post_number] == "1"
-      @order = Order.new(adress: current_customer.address, post_number: current_customer.post_number, customer: current_customer,payment_method: params[:order][:payment_method])
+      @order = Order.new(address: current_customer.address, post_number: current_customer.post_number, customer: current_customer,payment_method: params[:order][:payment_method])
       #@order.post_number = current_customer.post_number
       #@order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
