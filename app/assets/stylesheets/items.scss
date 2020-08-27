@@ -53,9 +53,33 @@
 	margin-left: 40px;
 }
 
+.home-title {
+	font-size: 20px;
 
+}
+.home {
+	width: 100%;
+	height: 450px;
+	background-image: image-url('cake.jpg');
+	background-size: 100% 450px;
 
-
-
-
-
+}
+.home-text  {
+	padding: 20px;
+	margin: 0 auto;
+	width: 400px;
+	color: #fff;
+	margin-top: 160px;
+	background-color: rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+}
+.genres-home {
+	width: 100%;
+	margin:0 auto;
+}
+.genres-home {
+	margin-top: 40px;
+}
+.favorite-title {
+	font-size: 25px;
+}
