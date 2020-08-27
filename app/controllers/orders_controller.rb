@@ -97,6 +97,8 @@ class OrdersController < ApplicationController
 
 
   def thanks
+    cart_items = current_customer.cart_items
+    cart_items.destroy_all
   end
 
   private
