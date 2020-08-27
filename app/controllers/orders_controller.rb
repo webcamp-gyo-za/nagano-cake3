@@ -7,17 +7,19 @@ class OrdersController < ApplicationController
   	@order.customer_id=current_customer.id
   	#@user=currrent_user
     @delivery = current_customer.deliveries
+    #redirect_to new_order_path(@order)
   end
 
   def confirm
     if params[:selected_post_number] == "1"
-      @order = Order.new(adress: current_customer.address, post_number: current_customer.post_number, customer: current_customer,payment_method: params[:order][:payment_method])
+      @order = Order.new(address: current_customer.address, post_number: current_customer.post_number, customer: current_customer,payment_method: params[:order][:payment_method])
       #@order.post_number = current_customer.post_number
       #@order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:selected_post_number] == "2"
 
     else
+    #byebug
   	@order = Order.new(customer: current_customer,payment_method: params[:order][:payment_method], post_number: params[:order][:post_number], address: params[:order][:address], name: params[:order][:name])
   	#@order.order_detail.new
   end
@@ -34,7 +36,7 @@ class OrdersController < ApplicationController
   #@shipping_cost = ShippingCost.find(params[:id])
 
   @order.order_price = @item_all_price + 800
-  @order.save
+  #@order.save
   p "___________________________________"
   p @order.order_price
  end
@@ -48,17 +50,17 @@ class OrdersController < ApplicationController
   	 if @order.save
       @cart_items = current_customer.cart_items
       @cart_items.each do |cart_item|
-      @order_detail = OrderDetail.new(customer_id: current_customer.id, item_id: cart_item.id, amount: cart_item.amount, price: cart_item.item.price)
+      @order_detail = OrderDetail.new(item_id: cart_item.item.id, number: cart_item.amount, price: cart_item.item.price)
       @order_detail.save
       end
-  	   redirect_to orders_success_path
-      end
+  	   redirect_to order_thanks_path
+      #end
 
 
 
-  	   if @order.customer_id=current_customer.id
+  	   #if @order.customer_id=current_customer.id
   	   #@user=currrent_user
-  	   render "new"
+  	   #render "new"
   	end
   end
 
