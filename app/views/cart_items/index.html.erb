@@ -4,15 +4,17 @@
     <div class="all_empty">
       <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class: 'btn btn-danger' %>
     </div>
+  </div>
+  <div class="col-lg-8">
     <!-- カートに追加された商品を表示 -->
-    <table>
+    <table class="table table-hover table-inverse table-bordered">
       <thead>
         <tr>
-          <td>商品名</td>
-          <td>単価（税込）</td>
-          <td>数量</td>
-          <td>小計</td>
-          <td></td>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -47,11 +49,20 @@
     </table>
     <%= link_to "買い物を続ける", items_path(current_customer), class: "btn btn-primary "%>
     <div class="sum">
-      <p>合計金額：<%= @sum_all.floor.to_s(:delimited) %>円</p>
+      <table class="table table-hover table-inverse table-bordered">
+        <tr>
+          <th>
+            合計金額
+          </th>
+          <td>
+            <%= @sum_all.floor.to_s(:delimited) %>円
+          </td>
+        </tr>
+      </table>
     </div>
     <% unless @cart_items.blank? %>
     <div class="into_order">
-      <%= link_to "情報入力に進む",order_new_path, class: "btn btn-success btn-lg" %>
+      <%= link_to "情報入力に進む", order_new_path, class: "btn btn-success btn-lg" %>
       <% end %>
     </div>
   </div>

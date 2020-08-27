@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
   	 if @order.save
       @cart_items = current_customer.cart_items
       @cart_items.each do |cart_item|
-      @order_detail = OrderDetail.new(item_id: cart_item.item.id, number: cart_item.amount, price: cart_item.item.price)
+      @order_detail = OrderDetail.new(order_id: @order.id, item_id: cart_item.item.id, number: cart_item.amount, price: cart_item.item.price)
       @order_detail.save
       end
   	   redirect_to order_thanks_path
@@ -67,8 +67,9 @@ class OrdersController < ApplicationController
 
 
   def index
-  	@order = Order.where(customer_id: current_customer.id).order(created_at: :desc)
-  	@item = @order.item
+  	#@order = Order.where(customer_id: current_customer.id).order(created_at: :desc)
+    @orders = current_customer.orders
+  	#@item = @order.item
     #
     #
     #@ordernumber = 0
@@ -79,7 +80,9 @@ class OrdersController < ApplicationController
 
   def show
   	@order = Order.find(params[:id])
-  	@cart_item = current_customer.cart_item
+    @order_detail = @order.order_details
+     @cart_items = CartItem.all
+  	#@cart_item = current_customer.cart_item
 
     #order= []  :中身のない配列order=Order.new に近いイメージ 初期化の１番の目的はnilから脱却すること
     #
@@ -90,13 +93,17 @@ class OrdersController < ApplicationController
      #@order_price=@order_price+cart_item.subtotal 小計
   end
 
-  @shipping_cost.order_price = @order_price + 800 #請求
+  #@order.order_price = @item_all_price + 800
+
+  #@shipping_cost.order_price = @order_price + 800 #請求
 
  end
 
 
 
   def thanks
+    cart_items = current_customer.cart_items
+    cart_items.destroy_all
   end
 
   private
