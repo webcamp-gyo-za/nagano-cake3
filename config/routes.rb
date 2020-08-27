@@ -29,14 +29,16 @@ Rails.application.routes.draw do
     end
   end
 
-    resources :orders, only: [:index, :show, :new, :create, :update]
+    resources :orders, only: [:index, :show, :create, :update]
     resources :deliveries, only: [:edit, :index, :create, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update,:destroy]
     resources :genres, only: [:show]
-    get 'order/confirm', to: 'orders#confirm'
+    get 'order/new', to: 'orders#new'
+    post 'order/confirm', to: 'orders#confirm'
     root to: 'items#home'
     get 'item/about', to: 'items#about'
+    get 'order/thanks', to: 'orders#thanks'
     get 'search/search'
     get 'withdrawal' => 'customers#withdrawal'
     put "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
