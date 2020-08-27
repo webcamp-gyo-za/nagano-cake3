@@ -33,15 +33,15 @@
 				<tbody>
 					<tr>
 						<th>商品合計</th>
-						<th><%= @order_price %></th>
+						<th><%= @item_all_price.to_s(:delimited) %>円<%#= @order_price %></th>
 					</tr>
 					<tr>
 						<th>配送料</th>
-						<th><%= @order.shipping_cost %></th>
+						<th>800円<%#= @order.shipping_cost %></th>
 					</tr>
 					<tr>
 						<th>ご請求額</th>
-						<th><%= @shipping_cost.order_price %></th>
+						<th><%= @order.order_price.to_s(:delimited) %>円<%#= @shipping_cost.order_price %></th>
 					</tr>
 				</tbody>
 			</table>

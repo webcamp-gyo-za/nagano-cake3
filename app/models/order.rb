@@ -1,14 +1,14 @@
 class Order < ApplicationRecord
 	belongs_to :customer
-	belongs_to :delivery
+
 	has_many :order_details, dependent: :destroy
 
 	validates :post_number, presence: true
-	validates :adress, presence: true
+	validates :address, presence: true
 	validates :name, presence: true
 	validates :order_price, presence: true
 	validates :status, presence: true
-	validates :paying_method, presence: true
+	validates :payment_method, presence: true
 
 	#def subtotal 入れる？？？
 		#(selfitem.price*self.amount*1.1).round

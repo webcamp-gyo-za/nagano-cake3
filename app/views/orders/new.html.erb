@@ -2,8 +2,17 @@
   <div class="row">
     <div class="col-xs-11">
       <h3 class="orders-infomation-view">注文情報入力</h3>
+      <% if @order.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-      <%=form_for(@order, url:order_confirm_path(@order),method: :get) do |f| %>
+      <%= form_for(@order, url:order_confirm_path(@order), method: :get) do |f| %>
       <%#= form_for(item, url:admins_items_path(item)) do |f| %>
       <h4>支払方法</h4>
       <%= f.radio_button :payment_method, "クレジットカード", checked: true  %>
@@ -34,7 +43,8 @@
 
       <%= radio_button_tag "selected_post_number","3", checked: true  %>
       <%= f.label :新しいお届け先 %>
-      <h5 class="new_post_number">郵便番号(ハイフンなし) <%=f.text_field :post_number %></h5>
+      <h5 class="new_post_number">郵便番号(ハイフンなし)</h5>
+      <h5 class="empty"><%=f.text_field :post_number %></h5>
       <h5 class="new_address">住所<%=f.text_field :address %></h5>
       <h5 class="new_name">宛名<%=f.text_field :name %></h5><br>
 
