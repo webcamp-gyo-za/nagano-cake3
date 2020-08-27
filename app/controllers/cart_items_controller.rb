@@ -22,11 +22,11 @@ class CartItemsController < ApplicationController
         @current_item.save
         redirect_to cart_items_path
       end
-      
   end
 
   def index
     @cart_items = @customer.cart_items.all
+    @sum_all = 0
   end
 
 
@@ -46,6 +46,7 @@ class CartItemsController < ApplicationController
     @customer.cart_items.destroy_all
     redirect_to cart_items_path
   end
+
 
   private
 
