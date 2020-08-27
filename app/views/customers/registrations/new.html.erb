@@ -11,12 +11,12 @@
             <%= f.label :last_name, "姓", class: "control-label" %>
             <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
             <%= f.label :first_name, "名", class: "control-label" %>
-            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "name"%>
           </div>
           <div class="form-group">
             <%= f.label :last_kana, "セイ", class: "control-label"%>
             <%= f.text_field :last_kana, autofocus: true, autocomplete: "first_kana" %>
-            <%= f.label :first_kana, "メイ", class: "control-label"%>
+            <%= f.label :first_kana, "メイ", class: "control-label kana-name"%>
             <%= f.text_field :first_kana, autofocus: true, autocomplete: "last_kana" %>
           </div>
           <div class="form-group">
@@ -53,9 +53,11 @@
           <% end %>
         </div>
       </div>
-      <%= link_to new_customer_session_path do %>
-      <span class="glyphicon glyphicon-chevron-left">ログインはこちら</span>
-      <% end %>
+      <div class="login-content">
+        <%= link_to new_customer_session_path do %>
+        <span class="glyphicon glyphicon-chevron-left">ログインはこちら</span>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

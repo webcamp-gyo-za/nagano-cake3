@@ -18,11 +18,12 @@ class CustomersController < ApplicationController
   end
 
   def withdrawal
+    # @customer = Customer.find(params[:id])
   end
 
-  def destroy
-    current_customer.update(is_deleted: true, withdrawal_status: 1)
-    @customer = Customer.find(params[:id])
+  def hide
+    @customer = Customer.find(current_customer.id)
+    @customer.update!(is_deleted: true)
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
