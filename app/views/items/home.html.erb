@@ -1,17 +1,29 @@
 <div class="row">
-  	<div class="col-xs-2">
-	    <h3>ジャンル検索</h3>
-	    <%=render 'admins/genres/genre_search', genres: @genres %>
-	</div>
+  <div class="col-xs-2 genres-home">
+    <h3>ジャンル検索</h3>
+    <%=render 'admins/genres/genre_search', genres: @genres %>
+  </div>
 
-    <div class="col-xs-10">
-	    <p>ようこそ、NaganoCakeへ！</p>
-	    <p>このサイトは、ケーキの販売のECサイトになります。</p>
-	    <p>会員でない方も商品の閲覧はできますが、</p>
-	    <p>購入には会員登録が必要になります。</p>
+  <div class="col-xs-10 home">
+    <div class="home-text text-center">
+      <p class="home-title text-center">ようこそ、NaganoCakeへ！</p>
+      <p>このサイトは、ケーキの販売のECサイトになります。</p>
+      <p>会員でない方も商品の閲覧はできますが、</p>
+      <p>購入には会員登録が必要になります。</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-2">
+      <h2><i class="fas fa-utensils"></i>オススメ商品(全<%= @items.count %>件)</h2>
 
-
-	    <strong>オススメ商品</strong>
-	</div>
-</div>
-
+      <div class="flex-item">
+        <% @items.each do |item| %>
+        <div class="flex-item-content">
+          <%= attachment_image_tag item, :image, size: "150x150", fallback: "no_image.jpg"%>
+          <div class="index-item-name"><%= link_to item.name, item_path(item)%></div>
+          ￥<%= price_include_tax(item.price) %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
