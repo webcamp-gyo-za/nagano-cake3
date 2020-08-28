@@ -15,7 +15,6 @@ class Admins::OrdersController < ApplicationController
 			redirect_to admins_orders_path
 		else
 		   render "show"
-		   @order_detail = @order.order_detail
 		end
  	end
 
