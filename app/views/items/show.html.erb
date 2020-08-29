@@ -1,11 +1,11 @@
-<div class="row">
-  <div class="col-xs-2">
+<div class="row item-show-container">
+  <div class="col-xs-2 item-show-genres">
     <%=render 'admins/genres/genre_search', genres: @genres %>
   </div>
 
   <div class="col-xs-4">
     <div class="item-img">
-      <%= attachment_image_tag @item, :image, size: "300x200", fallback: "no_image.jpg" %>
+      <%= attachment_image_tag @item, :image, size: "300x300", fallback: "no_image.jpg" %>
     </div>
   </div>
 
@@ -21,17 +21,15 @@
     </div>
 
     <div class="item-detail">
-      <div class="item-detail-price">¥<%= price_include_tax(@item.price) %>  (税込)</div>
+      <div class="item-detail-price">¥<%= price_include_tax(@item.price) %> (税込)</div>
     </div>
 
-  <div class="item-counts">
-    <%= form_for(@cart_item, url: cart_items_path) do |f| %>
-    <%= f.hidden_field :item_id %>
-    <%= f.select :amount, options_for_select((1..30).to_a), include_blank: "個数選択", class: "item-count-b" %>
-    <%= f.submit "カートに入れる", class: "btn btn-primary item-cart-b" %>
-    <% end %>
+    <div class="item-counts">
+      <%= form_for(@cart_item, url: cart_items_path) do |f| %>
+      <%= f.hidden_field :item_id %>
+      <%= f.select :amount, options_for_select((1..30).to_a), include_blank: "個数選択", class: "item-count-b" %>
+      <%= f.submit "カートに入れる", class: "btn btn-primary item-cart-b" %>
+      <% end %>
+    </div>
   </div>
-
-
-</div>
 </div>
