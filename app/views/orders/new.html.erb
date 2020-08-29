@@ -3,14 +3,14 @@
     <div class="col-xs-11">
       <h3 class="orders-infomation-view">注文情報入力</h3>
       <% if @order.errors.any? %>
-  <div class="alert alert-warning">
-    <ul>
-      <% @order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <div class="alert alert-warning">
+        <ul>
+          <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
       <% end %>
-    </ul>
-  </div>
-<% end %>
 
       <%= form_for(@order, url:order_confirm_path, method: :post) do |f| %>
       <%#= form_for(item, url:admins_items_path(item)) do |f| %>
@@ -31,13 +31,13 @@
 
 
 
-			 <%= radio_button_tag "selected_post_number","2"  %>
-			  <%= f.label :登録済みの住所から選択 %>
-			 <%#ここに選択窓%>
+      <%= radio_button_tag "selected_post_number","2", checked: true  %>
+      <%= f.label :登録済みの住所から選択 %>
+      <%#ここに選択窓%>
 
 
-			 <%=select_tag "select", options_from_collection_for_select(@delivery, :id, :collection) %><br>
-			 <%#post_numberからlast_nameを代入（モデルに値を記入）する%>
+      <%=select_tag "select", options_from_collection_for_select(@delivery, :id, :collection) %><br>
+      <%#post_numberからlast_nameを代入（モデルに値を記入）する%>
 
 
 
@@ -54,7 +54,3 @@
     <div class="col-xs-1"></div>
   </div>
 </div>
-
-
-
-

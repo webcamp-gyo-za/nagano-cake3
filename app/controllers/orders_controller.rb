@@ -17,10 +17,17 @@ class OrdersController < ApplicationController
       #@order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:selected_post_number] == "2"
-      unless params[:select].to_i == 0
+      #binding.pry
+      unless params[:select].nil?
+         #binding.pry
       delivery = Delivery.find(params[:select].to_i)
       @order = Order.new(address: delivery.address, post_number: delivery.post_number, customer: current_customer, payment_method: params[:order][:payment_method])
       @order.name = delivery.name
+      else
+      redirect_to order_new_path
+      #binding.pry
+      end
+
     else
       redirect_to order_new_path(@order)
     end
