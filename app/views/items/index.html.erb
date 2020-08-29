@@ -9,11 +9,13 @@
 
     <div class="flex-item">
       <% @items.each do |item| %>
-        <div class="flex-item-content">
-          <%= attachment_image_tag item, :image, size: "200x150", fallback: "no_image.jpg"%>
-          <div class="index-item-name"><%= link_to item.name, item_path(item)%></div>
-          ￥<%= price_include_tax(item.price) %>
-        </div>
+      <div class="flex-item-content">
+        <%= link_to item_path(item) do %>
+        <%= attachment_image_tag item, :image, size: "150x150", fallback: "no_image.jpg"%><br>
+        <% end %>
+        <div class="index-item-name"><%= item.name %></div>
+        ￥<%= price_include_tax(item.price) %>
+      </div>
       <% end %>
     </div>
 
@@ -21,4 +23,3 @@
 
   </div>
 </div>
-

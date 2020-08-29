@@ -4,4 +4,5 @@ module ApplicationHelper
 	   price = price * 1.08
 	  "#{price.floor.to_s(:delimited)}"
 	end
+
 end

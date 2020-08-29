@@ -5,12 +5,11 @@
     <table class="table-content">
       <tr>
         <td>顧客ID</td>
-        <td><%= @customer.id %></td>
-        <td>
+        <td><%= @customer.id %>:
           <% if @customer.is_deleted? %>
-            <p>退会済み会員</p>
+            退会済み会員
           <% else %>
-            <p>有効会員</p>
+            有効会員
           <% end %>
           </td>
       </tr>
@@ -39,9 +38,10 @@
         <td><%= @customer.email %></td>
       </tr>
     </table>
-    <div class="btn-content">
-      <p><%= link_to "編集", edit_admins_customer_path(@customer), class:"btn btn-primary" %>
-      <p><%= link_to "注文履歴一覧", orders_path, class:"btn btn-primary" %>
-    </div>
+
+    <ul class="btn-content">
+      <li class = "list"><%= link_to "編集", edit_admins_customer_path(@customer), class:"btn btn-primary" %></li>
+      <li class = "list" ><%= link_to "注文履歴一覧", orders_path, class:"btn btn-primary" %></li>
+    </ul>
   </div>
 </div>
