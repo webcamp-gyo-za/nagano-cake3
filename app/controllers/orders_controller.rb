@@ -17,7 +17,9 @@ class OrdersController < ApplicationController
       #@order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:selected_post_number] == "2"
-
+      delivery = Delivery.find(params[:select].to_i)
+      @order = Order.new(address: delivery.address, post_number: delivery.post_number, customer: current_customer, payment_method: params[:order][:payment_method])
+      @order.name = delivery.name
     else
     #byebug
   	@order = Order.new(customer: current_customer,payment_method: params[:order][:payment_method], post_number: params[:order][:post_number], address: params[:order][:address], name: params[:order][:name])
@@ -94,6 +96,7 @@ class OrdersController < ApplicationController
   end
 
   #@order.order_price = @item_all_price + 800
+    @tax = 1.08
 
   #@shipping_cost.order_price = @order_price + 800 #請求
 
