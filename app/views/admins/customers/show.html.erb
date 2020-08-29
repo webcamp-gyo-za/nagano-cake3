@@ -8,9 +8,9 @@
         <td><%= @customer.id %></td>
         <td>
           <% if @customer.is_deleted? %>
-            <p>無効会員</p>
+            <p>退会済み会員</p>
           <% else %>
-            <p>効会員</p>
+            <p>有効会員</p>
           <% end %>
           </td>
       </tr>

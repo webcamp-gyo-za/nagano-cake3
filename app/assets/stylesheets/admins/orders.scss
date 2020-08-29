@@ -1,3 +1,55 @@
 // Place all the styles related to the admins::orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admins-order-box {
+	width: 100%;
+	margin: 15px auto;
+}
+
+.admins-order-titlebox {
+	margin: 20px auto;
+}
+
+.admins-order-title {
+	font-size: 15px;
+	margin-right: 100px;
+}
+
+.admins-order-content {
+	font-size: 15px;
+}
+
+.admins-order-price-status-title {
+	font-size: 15px;
+	margin-right: 35px;
+	text-align: center;
+}
+
+.admins-order-price-status-content {
+	font-size: 15px;
+	text-align: center;
+}
+
+.admins-order-status {
+	margin-left: 20px;
+	text-align: center;
+}
+
+.admins-order-totaltitle {
+	font-size: 20px;
+}
+
+.admins-order-totalbody {
+	font-size: 20px;
+	text-align: right;
+}
+
+
+
+
+
+
+
+
+
