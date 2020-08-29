@@ -2,7 +2,7 @@
 	<div class="col-md-8 col-md-offset-2">
 	<h3>ジャンル一覧・追加</h3>
 
-	<div class="genre_create_content">
+	<div class="genre_index_content">
 		<%= form_for(@genre, url:admins_genres_path(@genre), method: :post) do |f| %>
 		<%= f.label :ジャンル %>
 		<%= f.text_field :name %>

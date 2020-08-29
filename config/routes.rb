@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :genres, only:[:index, :edit, :create, :update]
     resources :items, only: [:new, :index,:edit, :show, :create, :update]
     resources :customers, only: [:index, :show, :new, :edit, :update,]
-    patch 'order_detail/id', to: 'order_details#update', as: 'order_details'
+    resources :order_details, only: [:update]
   end
 
 
