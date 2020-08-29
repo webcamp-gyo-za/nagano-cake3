@@ -9,7 +9,6 @@
   </div>
   <div class="row">
     <div class="col-xs-2 genres-home">
-      <h3>ジャンル検索</h3>
       <%=render 'admins/genres/genre_search', genres: @genres %>
     </div>
     <div class="col-xs-10">
@@ -19,7 +18,7 @@
         <% @items.each do |item| %>
         <div class="flex-item-content">
           <%= link_to item_path(item) do %>
-          <%= attachment_image_tag item, :image, size: "150x150", fallback: "no_image.jpg"%><br>
+          <%= attachment_image_tag item, :image, size: "200x150", fallback: "no_image.jpg"%><br>
           <% end %>
           <div class="index-item-name"><%= item.name %></div>
           ￥<%= price_include_tax(item.price) %>

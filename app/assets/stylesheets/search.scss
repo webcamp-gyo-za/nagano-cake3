@@ -7,9 +7,16 @@
 	font-size: 20px;
 	margin-top: 10px;
 }
-.table th {
+.table-admins th {
 	background-color: rgba(192, 192, 192,1);
 }
+.table-admins th {
+	font-size: 20px;
+}
 .table-admins a {
-	color: #000000
+	color: #000000;
+	line-height: 3;
+}
+.table-admins-genres a {
+	font-size: 16px;
 }
