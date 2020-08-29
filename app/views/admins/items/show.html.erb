@@ -12,9 +12,9 @@
       <li class="admins-item-detail-content"><%= @item.name %></li>
     </ul>
 
-    <div class="admins-item-flex-title">商品説明</div>
-    <ul class="item-detail-flexbox">
-      <li class="admins-item_detail_flex-content"><%= @item.introduction %></li>
+    <ul class="item-detail">
+      <li class="admins-item-detail-title">商品説明</li>
+      <li class="admins-item-detail-content"><%= @item.introduction %></li>
     </ul>
 
     <ul class="item-detail">
@@ -33,15 +33,15 @@
       <li class="admins-item-detail-title">販売ステータス</li>
       <li class="admins-item-detail-content">
         <% if @item.is_active? %>
-          販売中
+        販売中
         <% else %>
-          販売不可
+        販売不可
         <% end %>
       </li>
     </ul>
 
-  <ul class="item-detail">
-    <%= link_to '編集', edit_admins_item_path(@item) ,class: "btn btn--orange btn--cubic btn--shadow" %>
-  </ul>
-</div>
+    <ul class="item-detail">
+      <%= link_to '編集', edit_admins_item_path(@item) ,class: "btn btn--orange btn--cubic btn--shadow" %>
+    </ul>
+  </div>
 </div>
