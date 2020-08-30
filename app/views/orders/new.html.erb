@@ -41,13 +41,12 @@
 
 
 
-      <%= radio_button_tag "selected_post_number","3", checked: true  %>
+      <%= radio_button_tag "selected_post_number","3" %>
       <%= f.label :新しいお届け先 %>
       <h5 class="new_post_number">郵便番号(ハイフンなし)</h5>
       <h5 class="empty"><%=f.text_field :post_number %></h5>
       <h5 class="new_address">住所<%=f.text_field :address %></h5>
       <h5 class="new_name">宛名<%=f.text_field :name %></h5><br>
-
 
       <%=f.submit "確認画面へ進む",class: "btn btn-primary" %>
       <% end %>

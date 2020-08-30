@@ -26,6 +26,9 @@ class OrdersController < ApplicationController
       end
       #binding.pry
     else
+      redirect_to order_new_path(@order)
+    end
+    else
     #byebug
   	  @order = Order.new(customer: current_customer,payment_method: params[:order][:payment_method], post_number: params[:order][:post_number], address: params[:order][:address], name: params[:order][:name])
   	#@order.order_detail.new
@@ -64,7 +67,7 @@ class OrdersController < ApplicationController
   	   #@user=currrent_user
   	   #render "new"
   	end
-  end
+  
 
   def index
   	#@order = Order.where(customer_id: current_customer.id).order(created_at: :desc)
