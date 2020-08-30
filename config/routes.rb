@@ -29,20 +29,21 @@ Rails.application.routes.draw do
       delete 'destroy_all'
     end
   end
+    get 'order/new', to: 'customers/orders#new'
+    post 'order/confirm', to: 'customers/orders#confirm'
+    root to: 'items#home'
+    get 'item/about', to: 'items#about'
+    get 'order/thanks', to: 'customers/orders#thanks'
+    get 'search/search'
+    get 'withdrawal' => 'customers#withdrawal'
+    put "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
+    post '/orders', to: 'customers/orders#create'
 
-    resources :orders, only: [:index, :show, :create, :update]
+    resources :orders, only: [:index, :show, :update]
     resources :deliveries, only: [:edit, :index, :create, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update,:destroy]
     resources :genres, only: [:show]
-    get 'order/new', to: 'orders#new'
-    post 'order/confirm', to: 'orders#confirm'
-    root to: 'items#home'
-    get 'item/about', to: 'items#about'
-    get 'order/thanks', to: 'orders#thanks'
-    get 'search/search'
-    get 'withdrawal' => 'customers#withdrawal'
-    put "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
-
+    
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

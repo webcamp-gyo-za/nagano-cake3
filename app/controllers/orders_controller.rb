@@ -1,11 +1,11 @@
-class OrdersController < ApplicationController
+class Customers::OrdersController < ApplicationController
 
   before_action :authenticate_customer!
-  before_action :a, only: [:confirm]
-  before_action :b, only: [:confirm]
+  # before_action :a, only: [:confirm]
+  # before_action :b, only: [:confirm]
   def new
   	@order = Order.new
-  	@order.customer_id=current_customer.id
+  	@order.customer_id = current_customer.id
   	#@user=currrent_user
     @delivery = current_customer.deliveries
     #redirect_to new_order_path(@order)
@@ -25,12 +25,16 @@ class OrdersController < ApplicationController
         @order.name = delivery.name
       end
       #binding.pry
+    # else
+    #   redirect_to order_new_path(@order)
+    # end
     else
-      redirect_to order_new_path(@order)
-    end
-    else
+      if params[:order][:post_number].empty? || params[:order][:address].empty? || params[:order][:name].empty?
+        redirect_to order_new_path
+      else
     #byebug
-  	  @order = Order.new(customer: current_customer,payment_method: params[:order][:payment_method], post_number: params[:order][:post_number], address: params[:order][:address], name: params[:order][:name])
+        @order = Order.new(customer: current_customer,payment_method: params[:order][:payment_method], post_number: params[:order][:post_number], address: params[:order][:address], name: params[:order][:name])
+      end
   	#@order.order_detail.new
     end
   	@cart_item = current_customer#要確認
@@ -45,10 +49,10 @@ class OrdersController < ApplicationController
 
     #@shipping_cost = ShippingCost.find(params[:id])
 
-    @order.order_price = @item_all_price + 800
+    # @order.order_price = @item_all_price + 800
     #@order.save
-    p "___________________________________"
-    p @order.order_price
+    # p "___________________________________"
+    # p @order.order_price
   end
 
   def create
@@ -62,7 +66,7 @@ class OrdersController < ApplicationController
       @order_detail.save
       end
   	   redirect_to order_thanks_path
-      #end
+      end
   	   #if @order.customer_id=current_customer.id
   	   #@user=currrent_user
   	   #render "new"
@@ -96,7 +100,7 @@ class OrdersController < ApplicationController
      #@order_price=@order_price+cart_item.subtotal 小計
   end
 
-  #@order.order_price = @item_all_price + 800
+  # @total_price = @order_price + 800
     @tax = 1.08
 
   #@shipping_cost.order_price = @order_price + 800 #請求
