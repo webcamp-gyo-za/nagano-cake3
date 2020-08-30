@@ -75,7 +75,7 @@ class OrdersController < ApplicationController
   	   #@user=currrent_user
   	   #render "new"
   	end
-  end
+  
 
 
 

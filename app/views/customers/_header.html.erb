@@ -42,6 +42,10 @@
           <li>
             <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-default navbar-btn header__right" %>
           </li>
+          <li>
+            <input type="search" class="ken" placeholder="キーワードを入力">
+            <i class="fas fa-search"><input type="submit" class="ken" value="search"></i>
+          </li>
           <!--非ログイン -->
           <% else %>
           <li>
