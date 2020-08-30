@@ -1,0 +1,41 @@
+<div class="row delivary-content">
+  <div class="col-xs-4">
+    <h2>配送先登録/一覧</h2>
+    <div class="deliveries-register">
+      <%= form_for(@delivery) do |f| %>
+      <div class="form-group-delivary">
+        <%= f.text_field :post_number, placeholder: "郵便番号" %>
+      </div>
+      <div class="form-group-delivary">
+        <%= f.text_field :address, placeholder: "住所" %>
+      </div>
+      <div class="form-group-delivary">
+        <%= f.text_field :name, autofocus: true, placeholder: "宛名" %>
+      </div>
+      <div class="delivary-btn">
+        <%= f.submit "登録する", class: "btn btn-primary btn-outline-danger" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-xs-8">
+    <table class="table-bordered row">
+      <tr>
+        <th class="col-xs-3">郵便番号</th>
+        <th class="col-xs-3">住所</th>
+        <th class="col-xs-3">宛名</th>
+        <th class="col-xs-3"></th>
+      </tr>
+      <% @deliveries.each do |delivery| %>
+      <tr>
+        <td><%= delivery.post_number %></td>
+        <td><%= delivery.address %></td>
+        <td><%= delivery.name %></td>
+        <td>
+          <%= link_to "編集する", edit_delivery_path(delivery),method: :get, class: "btn btn-primary" %> <%= link_to "削除する", delivery_path(delivery), method: :delete, class: "btn btn-danger" %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

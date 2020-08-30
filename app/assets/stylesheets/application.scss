@@ -1,0 +1,80 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "devise";
+@import "customers";
+
+body {
+  margin-top: 80px !important;
+  background-image: image-url('back.jpg');
+  background-size: auto;
+  background-repeat:repeat;
+  color: black;
+}
+
+nav ul {
+  list-style:none;
+}
+
+.header {
+  height: 80px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.login_name {
+  font-size: 14px;
+  color: #FFF;
+  margin-right: 50px;
+}
+
+
+.navbar-right {
+  line-height: 80px;
+}
+
+.navbar-left {
+  line-height: 80px;
+}
+
+.navbar-fixed-top {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.header__left {
+  font-size: 30px;
+  color: #fff;
+}
+
+.header__right {
+  margin-right: 10px;
+}
+
+.navbar {
+  border: 1px solid #000 !important;
+}
+.btn-default {
+  color: #333;
+}
+.ken{
+  margin-top: 25px;
+  height: 30px;
+}

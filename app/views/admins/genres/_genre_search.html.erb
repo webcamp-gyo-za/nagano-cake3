@@ -1,0 +1,15 @@
+<table class='table-admins'>
+  <thead>
+    <tr>
+      <th>ジャンル検索</th>
+    </tr>
+  </thead>
+  <!-- ジャンル毎に検索する -->
+  <tbody class="table-admins-genres">
+    <% genres.each do |genre| %>
+    <tr>
+      <td><%= link_to genre.name, search_search_path(genre: genre.id) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

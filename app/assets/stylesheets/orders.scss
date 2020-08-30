@@ -1,0 +1,43 @@
+// Place all the styles related to the orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.new_post_number {
+  font-weight: bold;
+  display: inline-block;
+}
+
+.new_address{
+	font-weight: bold;
+}
+
+.new_name{
+	font-weight: bold;
+}
+
+.empty{
+	display: inline-block;
+}
+
+.table-title{
+	font-weight: bold;
+}
+
+.order-histry-view{
+	margin-right: 25px;
+}
+
+
+.order-detail-view{
+	margin-right: 25px;
+}
+
+.thanks{
+	margin-top: 200px;
+	color: red;
+	font-size: 40px;
+}
+.order-info {
+	background-color: #fff;
+}

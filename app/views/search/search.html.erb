@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-xs-2 item-index-genres">
+    <%=render 'admins/genres/genre_search', genres: @genres %>
+  </div>
+  <div class="col-xs-10">
+    <h2><%= @genre.name %>一覧(全<%= @genre_items.count %>件)</h2>
+
+    <div class="flex-item">
+      <% @genre_items.each do |item| %>
+      <div class="flex-item-content">
+        <%= link_to item_path(item) do %>
+        <%= attachment_image_tag item, :image, size: "200x150", fallback: "no_image.jpg"%><br>
+        <% end %>
+        <div class="index-item-name"><%= item.name %></div>
+        ￥<%= price_include_tax(item.price) %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

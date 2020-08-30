@@ -1,0 +1,27 @@
+// Place all the styles related to the deliveries controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.table-bordered {
+  margin-top: 30px;
+}
+.table-bordered {
+  background-color: #fff;
+  th {
+    padding: 10px;
+    background-color: rgba(192, 192, 192,1);
+  }
+  td {
+    padding: 10px;
+  }
+}
+.form-group-delivary {
+  margin-bottom: 10px;
+  input {
+    width: 70%;
+  }
+}
+.delivary-btn {
+  margin-top: 10px;
+
+}

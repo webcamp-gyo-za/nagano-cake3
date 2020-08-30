@@ -1,0 +1,47 @@
+<div class="row">
+  <h2 class="mypage"></i><%= @customer.full_name %>さんの会員詳細</h2>
+
+  <div class="col-xs-10">
+    <table class="table-content">
+      <tr>
+        <td>顧客ID</td>
+        <td><%= @customer.id %>:
+          <% if @customer.is_deleted? %>
+            退会済み会員
+          <% else %>
+            有効会員
+          <% end %>
+          </td>
+      </tr>
+      <tr>
+        <td>氏名</td>
+        <td><%= @customer.last_name %><%= @customer.first_name %></td>
+      </tr>
+      <tr>
+        <td>カナ</td>
+        <td><%= @customer.last_kana %><%= @customer.first_kana %></td>
+      </tr>
+      <tr>
+        <td>郵便番号</td>
+        <td><%= @customer.post_number %></td>
+      </tr>
+      <tr>
+        <td>住所</td>
+        <td><%= @customer.address %></td>
+      </tr>
+      <tr>
+        <td>電話番号</td>
+        <td><%= @customer.phone_number %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= @customer.email %></td>
+      </tr>
+    </table>
+
+    <ul class="btn-content">
+      <li class = "list"><%= link_to "編集", edit_admins_customer_path(@customer), class:"btn btn-primary" %></li>
+      <li class = "list" ><%= link_to "注文履歴一覧", orders_path, class:"btn btn-primary" %></li>
+    </ul>
+  </div>
+</div>

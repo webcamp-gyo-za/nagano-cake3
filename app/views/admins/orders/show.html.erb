@@ -1,0 +1,80 @@
+
+<h2 class="admins_order-show-view">注文履歴詳細</h2>
+<div class="admins-order-box">
+	<ul class="admins-order-titlebox">
+		<li class="admins-order-title">購入者</li>
+		<li class="admins-order-content">
+			<%= link_to @order.customer.full_name, admins_customer_path(@order.customer) %></li>
+	</ul>
+	<ul class="admins-order-titlebox">
+		<li class="admins-order-title">配送先</li>
+		<li class="admins-order-content"><%= @order.post_number %><%= @order.address %><br>
+			    <%= @order.name %></li>
+ 	</ul>
+ 	<ul class="admins-order-titlebox">
+		<li class="admins-order-title">支払方法</li>
+		<li class="admins-order-content"><%= @order.payment_method %></li>
+	</ul>
+	<ul>
+		<li class="admins-order-price-status-title">注文ステータス</li>
+		<li class="admins-order-price-status-content">
+		 	<%=form_for(@order, url: admins_order_path, method: :patch) do |f| %>
+		    	<%= f.select :status, Order.statuses.keys.to_a %>
+		    	<%= f.submit "更新",class: "btn btn-primary admins-order-status" %>
+		    <% end %>
+		</li>
+	</ul>
+</div>
+
+	<div class="row">
+		<div class="col-xs-7">
+		   <table class="table table-hover table-bordered table-condensed">
+				<thead>
+					<tr>
+						<th>商品名</th>
+						<th>単価(税込)</th>
+						<th>数量</th>
+						<th>小計</th>
+						<th>製作ステータス</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @order_details.each do |order_detail| %>
+					<tr>
+						<td><%= order_detail.item.name %></td>
+						<td><%= price_include_tax(order_detail.price) %></td>
+						<td><%= order_detail.number %></td>
+						<td><% detail_price = order_detail.price * order_detail.number %>
+							<%= price_include_tax(detail_price) %>
+							<% @sum_detail += detail_price %>
+						</td>
+						<td>
+							<%= form_for(order_detail, url: admins_order_detail_path(order_detail), method: :patch)  do |f| %>
+							<%= f.select :status,  OrderDetail.statuses.keys.to_a %>
+            				<%= f.submit "更新" ,class: "btn btn-primary admins-order-status" %>
+            				<% end %>
+            			</td>
+					</tr>
+					<% end %>
+				</tbody>
+		   </table>
+		</div>
+
+    <div class="col-xs-5">
+      <table class="table table-hover table-bordered table-condensed">
+      	<tr>
+    	  <td class="admins-order-totaltitle">商品合計</td>
+    	  <td class="admins-order-totalbody"><%= price_include_tax(@sum_detail) %>円</td>
+        </tr>
+        <tr>
+    	  <td class="admins-order-totaltitle">送料</td>
+    	  <td class="admins-order-totalbody"><%= @order.shipping_cost %>円</td>
+    	</tr>
+    	<tr>
+    	 <td class="admins-order-totaltitle">請求金額合計</td>
+    	 <td class="admins-order-totalbody"><%= (@sum_detail * @tax + @order.shipping_cost).floor.to_s(:delimited) %>円</td>
+        </tr>
+       </table>
+
+    </div>
+</div>
