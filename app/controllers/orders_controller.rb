@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
 
   before_action :authenticate_customer!
-
+  before_action :a, only: [:confirm]
+  before_action :b, only: [:confirm]
   def new
   	@order = Order.new
   	@order.customer_id=current_customer.id
@@ -17,45 +18,39 @@ class OrdersController < ApplicationController
       #@order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:selected_post_number] == "2"
-      #binding.pry
-      unless params[:select].nil?
-         #binding.pry
-      delivery = Delivery.find(params[:select].to_i)
-      @order = Order.new(address: delivery.address, post_number: delivery.post_number, customer: current_customer, payment_method: params[:order][:payment_method])
-      @order.name = delivery.name
-      else
-      redirect_to order_new_path
-      #binding.pry
+      # binding.pry
+      if not params[:select].nil?
+        delivery = Delivery.find(params[:select].to_i)
+        @order = Order.new(address: delivery.address, post_number: delivery.post_number, customer: current_customer, payment_method: params[:order][:payment_method])
+        @order.name = delivery.name
       end
-
+      #binding.pry
     else
     #byebug
-  	@order = Order.new(customer: current_customer,payment_method: params[:order][:payment_method], post_number: params[:order][:post_number], address: params[:order][:address], name: params[:order][:name])
+  	  @order = Order.new(customer: current_customer,payment_method: params[:order][:payment_method], post_number: params[:order][:post_number], address: params[:order][:address], name: params[:order][:name])
   	#@order.order_detail.new
-  end
+    end
   	@cart_item = current_customer#要確認
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items
 
     #@cart_item = current_customer.cart_item
 
-  @item_all_price = 0
-  @cart_items.each do |cart_item|
-    @item_all_price += cart_item.subtotal
+    @item_all_price = 0
+    @cart_items.each do |cart_item|
+      @item_all_price += cart_item.subtotal
+    end
+
+    #@shipping_cost = ShippingCost.find(params[:id])
+
+    @order.order_price = @item_all_price + 800
+    #@order.save
+    p "___________________________________"
+    p @order.order_price
   end
-
-  #@shipping_cost = ShippingCost.find(params[:id])
-
-  @order.order_price = @item_all_price + 800
-  #@order.save
-  p "___________________________________"
-  p @order.order_price
- end
 
   def create
   	@order = current_customer.orders.new(order_params)
     @delivery = current_customer.deliveries
-
-
 
   	 if @order.save
       @cart_items = current_customer.cart_items
@@ -65,16 +60,11 @@ class OrdersController < ApplicationController
       end
   	   redirect_to order_thanks_path
       #end
-
-
-
   	   #if @order.customer_id=current_customer.id
   	   #@user=currrent_user
   	   #render "new"
   	end
   end
-
-
 
   def index
   	#@order = Order.where(customer_id: current_customer.id).order(created_at: :desc)
@@ -110,8 +100,6 @@ class OrdersController < ApplicationController
 
  end
 
-
-
   def thanks
     cart_items = current_customer.cart_items
     cart_items.destroy_all
@@ -121,5 +109,17 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:subtotal, :number, :payment_method, :order_price, :post_number, :address, :name, :customer_id, :delivery_id)
   end
+
+  def a
+    if params[:selected_post_number] == "2" && current_customer.deliveries.count == 0
+      redirect_to order_new_path
+    end
+  end
+  def b
+    if params[:selected_post_number] == "3" && current_customer.deliveries.count == 0
+      redirect_to order_new_path
+    end
+  end
+
 
 end

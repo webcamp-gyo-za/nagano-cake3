@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-   <div class="xol-xs-12">
-    <h2 class="order-confirm-view">注文情報確認</h2>
-   </div>
-</div>
- <div class="row">
+    <div class="xol-xs-12">
+      <h2 class="order-confirm-view">注文情報確認</h2>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-xs-9">
       <table class="table table-hover table-inverse table-bordered">
         <thead>
@@ -31,15 +31,15 @@
         <tbody>
           <tr>
             <th>送料</th>
-            <th>800円</th>
+            <td>800円</td>
           </tr>
           <tr>
             <th>商品合計</th>
-            <th><%= @item_all_price.to_s(:delimited) %>円</th>
+            <td><%= @item_all_price.to_s(:delimited) %>円</td>
           </tr>
           <tr>
             <th>請求料金</th>
-            <th><%= @order.order_price.to_s(:delimited) %>円</th>
+            <td><%= @order.order_price.to_s(:delimited) %>円</td>
           </tr>
         </tbody>
       </table>
@@ -49,13 +49,16 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-9">
-      <h4><支払方法><br>
-       <%= @order.payment_method %></h4>
-      <h4><お届け先><br> 
-        〒-<%= @order.post_number %><br>
-        住所-<%= @order.address %><br>
-        宛先-<%= @order.name %>
-        </h4>
+      <h4>
+        <支払方法><br>
+          <%= @order.payment_method %>
+      </h4>
+      <h4>
+        <お届け先><br>
+          〒-<%= @order.post_number %><br>
+          住所-<%= @order.address %><br>
+          宛先-<%= @order.name %>
+      </h4>
     </div>
     <div class="col-xs-3"></div>
   </div>
@@ -67,10 +70,10 @@
       <%=form_for(@order) do |f| %>
 
       <%= f.hidden_field :post_number, :value => @order.post_number %>
-            <%= f.hidden_field :address, :value => @order.address %>
-            <%= f.hidden_field :name, :value => @order.name %>
-            <%= f.hidden_field :payment_method, :value => @order.payment_method %>
-            <%= f.hidden_field :order_price, :value => @order.order_price %>
+      <%= f.hidden_field :address, :value => @order.address %>
+      <%= f.hidden_field :name, :value => @order.name %>
+      <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+      <%= f.hidden_field :order_price, :value => @order.order_price %>
 
 
       <%=f.submit "購入を確定する",class:"btn btn-success" %>
@@ -79,14 +82,3 @@
     <div class="col-xs-3"></div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
